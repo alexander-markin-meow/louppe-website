@@ -1,7 +1,7 @@
 /* louppe.eu — dark single-column design system */
 :root {
-  --bg: #0e0b13;
-  --surface: #17111f;
+  --bg: #000000;
+  --surface: rgba(23, 17, 31, 0.78);
   --surface-strong: #2b1c3e;
   --ink: #f4effa;
   --ink-soft: #b9afc5;
@@ -10,6 +10,18 @@
   --accent-dark: #c5a5ff;
   --border: #302639;
   --border-accent: #55406c;
+  --mesh-1: #649d87;
+  --mesh-2: #534c74;
+  --mesh-3: #a44642;
+  --mesh-strength: 0.36;
+  --mesh-size: 1;
+  --mesh-blur: 42px;
+  --mesh-secondary: 0.27;
+  --drift-a: 28s;
+  --drift-b: 28s;
+  --drift-zoom: 0.14;
+  --grain-strength: 0.12;
+  --grain-rate: 840ms;
   --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
   --page-max: 720px;
@@ -25,6 +37,7 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--sans);
@@ -34,7 +47,70 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.background-stage {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  contain: paint;
+  background: var(--bg);
+  pointer-events: none;
+}
+
+.background-fx {
+  position: absolute;
+  inset: 0;
+}
+
+.background-mesh::before,
+.background-mesh::after {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  background:
+    radial-gradient(calc(38% * var(--mesh-size)) calc(38% * var(--mesh-size)) at 28% 32%,
+      color-mix(in srgb, var(--mesh-1) calc(var(--mesh-strength) * 100%), transparent), transparent 70%),
+    radial-gradient(calc(42% * var(--mesh-size)) calc(42% * var(--mesh-size)) at 72% 66%,
+      color-mix(in srgb, var(--mesh-2) calc(var(--mesh-strength) * 100%), transparent), transparent 70%),
+    radial-gradient(calc(34% * var(--mesh-size)) calc(34% * var(--mesh-size)) at 62% 22%,
+      color-mix(in srgb, var(--mesh-3) calc(var(--mesh-strength) * 73%), transparent), transparent 70%);
+  filter: blur(var(--mesh-blur));
+  animation: background-drift var(--drift-a) ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.background-mesh::after {
+  opacity: var(--mesh-secondary);
+  animation-duration: var(--drift-b);
+  animation-direction: alternate-reverse;
+}
+
+@keyframes background-drift {
+  from { transform: translate3d(-4%, -3%, 0) scale(1); }
+  to { transform: translate3d(5%, 4%, 0) scale(calc(1 + var(--drift-zoom))); }
+}
+
+.background-grain::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background-image: var(--grain-url);
+  opacity: var(--grain-strength);
+  animation: background-grain-shift var(--grain-rate) steps(1) infinite;
+  will-change: transform;
+}
+
+@keyframes background-grain-shift {
+  0% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(-3%, 2%, 0); }
+  50% { transform: translate3d(2%, -3%, 0); }
+  75% { transform: translate3d(-2%, -2%, 0); }
+  100% { transform: translate3d(3%, 1%, 0); }
+}
+
 .page {
+  position: relative;
+  z-index: 1;
   width: min(100% - 48px, var(--page-max));
   margin: 0 auto;
   padding: 72px 0 24px;
@@ -263,4 +339,10 @@ a[target="_blank"]::after {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; }
+
+  .background-mesh::before,
+  .background-mesh::after,
+  .background-grain::before {
+    animation: none !important;
+  }
 }

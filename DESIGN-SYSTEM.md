@@ -10,12 +10,21 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 
 ## visual language
 
-- deep plum-black page with soft lavender-white text
+- pure black base with the animated mesh-and-grain background adapted from the background trial
 - bright purple is the sole accent color, used for headings, links, tags, and focus states
-- subtly lighter plum surfaces distinguish supporting content without shadows or gradients
+- the mesh uses muted teal, violet, and red blobs; these atmospheric colors are not reused as interface accents
+- translucent plum surfaces distinguish supporting content without shadows
 - system sans-serif for display and reading text; IBM Plex Mono for compact labels, tags, and footer details
 - large, compact display title with simple type hierarchy beneath it
 - soft 12px corners and quiet purple borders
+
+## background effect
+
+- fixed decorative stage behind the page, ignored by assistive technology and pointer input
+- mesh: 42px blur, 1× blob size, 0.36 strength, 0.27 second layer, 28s drift on both layers, 0.14 drift zoom
+- colors: `#649d87`, `#534c74`, and `#a44642`, sampled from the chosen trial settings
+- grain: 0.12 strength, 840ms resample motion, 0.5 frequency, 4 octaves
+- disable mesh and grain motion when the visitor prefers reduced motion
 
 ## layout
 

@@ -1,0 +1,8 @@
+# louppe
+
+> a free, open-source, keyboard-first photo and video culler for macOS
+
+- [website](https://louppe.eu/): product overview, features, and download
+- [download](https://github.com/alexander-markin-meow/louppe/releases): macOS releases
+- [source code](https://github.com/alexander-markin-meow/louppe): application source
+- [author](https://alex-markin.com/): alex markin

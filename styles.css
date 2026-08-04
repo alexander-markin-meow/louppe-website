@@ -1,0 +1,218 @@
+/* louppe.eu — design system */
+:root {
+  --bg: #000000;
+  --ink: #ccc6b9;
+  --ink-bright: #eae5da;
+  --ink-hover: #ffffff;
+  --muted: #847e70;
+  --faint: #66614f;
+  --footnote: #5c574a;
+  --accent: #7d8f5c;
+  --hairline: #35322a;
+  --rule: #24221d;
+  --border: #2a2822;
+  --chip-bg: #131311;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+  --fs-display: 44px;
+  --fs-body: 16px;
+  --fs-desc: 14.5px;
+  --fs-heading: 12px;
+  --fs-tag: 11px;
+  --fs-meta: 11.5px;
+  --fs-footer: 10.5px;
+  --page-max: 1100px;
+  --col-min: 340px;
+  --gap-col: 64px;
+  --gap-row: 44px;
+  --radius: 2px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 36px 48px 12px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--col-min), 1fr));
+  gap: var(--gap-row) var(--gap-col);
+  margin-bottom: 48px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-row);
+}
+
+.name {
+  margin: 0;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: var(--fs-display);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+  color: var(--ink-bright);
+}
+
+.meta {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.heading {
+  margin: 0 0 14px;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: var(--fs-heading);
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--accent);
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover,
+a:focus-visible { color: var(--ink-hover); }
+
+a[target="_blank"]::after {
+  content: "↗";
+  margin-left: 0.15em;
+  font-family: var(--mono);
+  font-size: var(--fs-tag);
+  letter-spacing: 0;
+}
+
+.links,
+.pubs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.links li { margin: 8px 0; }
+.pubs { display: flex; flex-direction: column; gap: 18px; }
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.row a { white-space: nowrap; }
+
+.row > a:first-child::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.leader {
+  flex: 1;
+  border-bottom: 1px dotted var(--hairline);
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: var(--fs-tag);
+  color: var(--faint);
+}
+
+.desc {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: var(--fs-desc);
+}
+
+.demo-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--chip-bg);
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: var(--fs-tag);
+  text-align: center;
+}
+
+.footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px 24px;
+  font-family: var(--mono);
+  font-size: var(--fs-footer);
+  letter-spacing: 0.06em;
+  color: var(--footnote);
+}
+
+.footer-domain { justify-self: end; }
+.footer a { color: inherit; }
+.footer a:hover,
+.footer a:focus-visible { color: var(--ink-hover); }
+
+.copy-markdown {
+  justify-self: center;
+  margin: 0;
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.copy-markdown:hover,
+.copy-markdown:focus-visible { color: var(--ink-hover); }
+
+.copy-source {
+  position: fixed;
+  inset: 0 auto auto -9999px;
+}
+
+@media (max-width: 640px) {
+  .page { padding: 36px 24px 12px; }
+  .name { font-size: 32px; }
+  .row { flex-wrap: wrap; row-gap: 2px; }
+  .row a { white-space: normal; }
+  .leader { min-width: 16px; }
+  .footer { grid-template-columns: auto auto; justify-content: space-between; }
+  .copy-markdown { grid-column: 1 / -1; grid-row: 1; margin-bottom: 4px; }
+  .footer-date { grid-column: 1; grid-row: 2; }
+  .footer-domain { grid-column: 2; grid-row: 2; }
+}

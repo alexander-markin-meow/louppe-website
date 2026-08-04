@@ -2,10 +2,28 @@
 (function () {
   var root = document.documentElement;
   var grainSvg = "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'>" +
-    "<filter id='n' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.82' " +
+    "<filter id='n' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.65' " +
     "numOctaves='4' stitchTiles='stitch'/></filter>" +
     "<rect width='512' height='512' filter='url(#n)'/></svg>";
   root.style.setProperty("--grain-url", 'url("data:image/svg+xml,' + encodeURIComponent(grainSvg) + '")');
+
+  var backgroundStage = document.querySelector(".background-stage");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var parallaxFrame = 0;
+
+  function updateParallax() {
+    parallaxFrame = 0;
+    backgroundStage.style.setProperty("--scroll-parallax", (window.scrollY * 0.3) + "px");
+  }
+
+  function scheduleParallax() {
+    if (!parallaxFrame) parallaxFrame = window.requestAnimationFrame(updateParallax);
+  }
+
+  if (backgroundStage && !reduceMotion.matches) {
+    window.addEventListener("scroll", scheduleParallax, { passive: true });
+    updateParallax();
+  }
 
   var copyButton = document.querySelector("[data-copy-markdown]");
   if (!copyButton) return;

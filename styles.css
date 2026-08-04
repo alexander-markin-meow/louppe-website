@@ -14,13 +14,8 @@
   --mesh-2: #534c74;
   --mesh-3: #a44642;
   --mesh-strength: 0.36;
-  --mesh-size: 1;
   --mesh-blur: 42px;
-  --mesh-secondary: 0.27;
-  --drift-a: 20s;
-  --drift-b: 27s;
-  --drift-zoom: 0.18;
-  --grain-strength: 0.065;
+  --grain-strength: 0.16;
   --grain-rate: 840ms;
   --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
@@ -56,6 +51,8 @@ body {
   contain: paint;
   background: var(--bg);
   pointer-events: none;
+  transform: translate3d(0, var(--scroll-parallax, 0px), 0);
+  will-change: transform;
 }
 
 .background-fx {
@@ -63,45 +60,93 @@ body {
   inset: 0;
 }
 
-.background-mesh::before,
-.background-mesh::after {
-  content: "";
+.background-mesh { z-index: 0; }
+.background-grain { z-index: 1; }
+
+.mesh-blob {
   position: absolute;
-  inset: -25%;
-  background:
-    radial-gradient(calc(34% * var(--mesh-size)) calc(24% * var(--mesh-size)) at 24% 10%,
-      color-mix(in srgb, var(--mesh-1) calc(var(--mesh-strength) * 100%), transparent), transparent 70%),
-    radial-gradient(calc(32% * var(--mesh-size)) calc(22% * var(--mesh-size)) at 76% 18%,
-      color-mix(in srgb, var(--mesh-3) calc(var(--mesh-strength) * 73%), transparent), transparent 70%),
-    radial-gradient(calc(38% * var(--mesh-size)) calc(24% * var(--mesh-size)) at 70% 40%,
-      color-mix(in srgb, var(--mesh-2) calc(var(--mesh-strength) * 100%), transparent), transparent 70%),
-    radial-gradient(calc(36% * var(--mesh-size)) calc(23% * var(--mesh-size)) at 18% 56%,
-      color-mix(in srgb, var(--mesh-1) calc(var(--mesh-strength) * 88%), transparent), transparent 70%),
-    radial-gradient(calc(34% * var(--mesh-size)) calc(22% * var(--mesh-size)) at 78% 71%,
-      color-mix(in srgb, var(--mesh-3) calc(var(--mesh-strength) * 68%), transparent), transparent 70%),
-    radial-gradient(calc(40% * var(--mesh-size)) calc(24% * var(--mesh-size)) at 38% 91%,
-      color-mix(in srgb, var(--mesh-2) calc(var(--mesh-strength) * 92%), transparent), transparent 70%);
+  width: var(--blob-size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--blob-color) calc(var(--mesh-strength) * 100%), transparent),
+    transparent 70%);
   filter: blur(var(--mesh-blur));
-  animation: background-drift-front var(--drift-a) ease-in-out infinite alternate;
-  transform-origin: 44% 38%;
+  opacity: var(--blob-opacity, 1);
+  animation: blob-drift var(--blob-speed) ease-in-out infinite alternate;
+  animation-delay: var(--blob-delay, 0s);
   will-change: transform;
 }
 
-.background-mesh::after {
-  opacity: var(--mesh-secondary);
-  animation-name: background-drift-back;
-  animation-duration: var(--drift-b);
-  transform-origin: 62% 58%;
+.mesh-blob--1 {
+  --blob-color: var(--mesh-1);
+  --blob-size: clamp(340px, 55vw, 780px);
+  --blob-opacity: 1;
+  --blob-speed: 22s;
+  --blob-delay: -7s;
+  --from-x: -8%; --from-y: -4%; --from-scale: 0.95;
+  --to-x: 12%; --to-y: 8%; --to-scale: 1.12;
+  top: -8%; left: -15%;
 }
 
-@keyframes background-drift-front {
-  from { transform: translate3d(-6%, -5%, 0) scale(0.98); }
-  to { transform: translate3d(8%, 6%, 0) scale(calc(1 + var(--drift-zoom))); }
+.mesh-blob--2 {
+  --blob-color: var(--mesh-3);
+  --blob-size: clamp(260px, 40vw, 620px);
+  --blob-opacity: 0.86;
+  --blob-speed: 31s;
+  --blob-delay: -19s;
+  --from-x: 8%; --from-y: -6%; --from-scale: 1.08;
+  --to-x: -12%; --to-y: 9%; --to-scale: 0.94;
+  top: 3%; right: -8%;
 }
 
-@keyframes background-drift-back {
-  from { transform: translate3d(7%, -4%, 0) scale(1.10); }
-  to { transform: translate3d(-6%, 7%, 0) scale(0.96); }
+.mesh-blob--3 {
+  --blob-color: var(--mesh-2);
+  --blob-size: clamp(300px, 48vw, 700px);
+  --blob-opacity: 0.92;
+  --blob-speed: 25s;
+  --blob-delay: -4s;
+  --from-x: -10%; --from-y: 8%; --from-scale: 0.92;
+  --to-x: 8%; --to-y: -10%; --to-scale: 1.15;
+  top: 25%; left: 48%;
+}
+
+.mesh-blob--4 {
+  --blob-color: var(--mesh-1);
+  --blob-size: clamp(240px, 37vw, 560px);
+  --blob-opacity: 0.78;
+  --blob-speed: 34s;
+  --blob-delay: -24s;
+  --from-x: -6%; --from-y: 10%; --from-scale: 1.05;
+  --to-x: 15%; --to-y: -7%; --to-scale: 0.90;
+  top: 47%; left: -12%;
+}
+
+.mesh-blob--5 {
+  --blob-color: var(--mesh-3);
+  --blob-size: clamp(290px, 46vw, 680px);
+  --blob-opacity: 0.74;
+  --blob-speed: 28s;
+  --blob-delay: -12s;
+  --from-x: 12%; --from-y: 6%; --from-scale: 0.96;
+  --to-x: -8%; --to-y: -12%; --to-scale: 1.13;
+  top: 63%; right: -14%;
+}
+
+.mesh-blob--6 {
+  --blob-color: var(--mesh-2);
+  --blob-size: clamp(360px, 60vw, 820px);
+  --blob-opacity: 0.82;
+  --blob-speed: 38s;
+  --blob-delay: -29s;
+  --from-x: -12%; --from-y: -6%; --from-scale: 1.10;
+  --to-x: 10%; --to-y: 12%; --to-scale: 0.93;
+  top: 79%; left: 18%;
+}
+
+@keyframes blob-drift {
+  from { transform: translate3d(var(--from-x), var(--from-y), 0) scale(var(--from-scale)); }
+  to { transform: translate3d(var(--to-x), var(--to-y), 0) scale(var(--to-scale)); }
 }
 
 .background-grain::before {
@@ -110,7 +155,7 @@ body {
   inset: -20%;
   background-image: var(--grain-url);
   background-size: 512px 512px;
-  filter: contrast(1.35);
+  filter: contrast(2.4) brightness(0.72);
   mix-blend-mode: screen;
   opacity: var(--grain-strength);
   animation: background-grain-shift var(--grain-rate) steps(1) infinite;
@@ -339,8 +384,7 @@ a[target="_blank"]::after {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; }
 
-  .background-mesh::before,
-  .background-mesh::after,
+  .mesh-blob,
   .background-grain::before {
     animation: none !important;
   }

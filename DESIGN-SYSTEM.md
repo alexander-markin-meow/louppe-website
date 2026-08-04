@@ -1,6 +1,6 @@
 # louppe.eu design system
 
-Bright, direct, and intentionally simple. Static HTML + CSS with no build step.
+Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 
 ## voice
 
@@ -10,12 +10,12 @@ Bright, direct, and intentionally simple. Static HTML + CSS with no build step.
 
 ## visual language
 
-- warm near-white page with dark plum text
-- vivid purple is the sole accent color, used for headings, links, tags, and focus states
-- pale lavender surfaces distinguish supporting content without shadows or gradients
+- deep plum-black page with soft lavender-white text
+- bright purple is the sole accent color, used for headings, links, tags, and focus states
+- subtly lighter plum surfaces distinguish supporting content without shadows or gradients
 - system sans-serif for display and reading text; IBM Plex Mono for compact labels, tags, and footer details
 - large, compact display title with simple type hierarchy beneath it
-- soft 12px corners and light purple-grey borders
+- soft 12px corners and quiet purple borders
 
 ## layout
 

@@ -21,7 +21,7 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 ## background effect
 
 - document-length decorative stage behind the page, ignored by assistive technology and pointer input
-- on scroll the stage offsets by 0.3× the scroll distance, so it travels at roughly 70% of content speed
+- on scroll each blob travels at its own fixed ratio between 0.55× and 0.85× of content speed
 - six independent blobs run distinct 22–38s animations with different sizes, directions, scale changes, and phases
 - mesh blobs retain a 42px blur and use varied opacity rather than a duplicated second layer
 - colors: `#649d87`, `#534c74`, and `#a44642`, sampled from the chosen trial settings

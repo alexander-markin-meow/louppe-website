@@ -7,20 +7,28 @@
     "<rect width='512' height='512' filter='url(#n)'/></svg>";
   root.style.setProperty("--grain-url", 'url("data:image/svg+xml,' + encodeURIComponent(grainSvg) + '")');
 
-  var backgroundStage = document.querySelector(".background-stage");
+  var parallaxBlobs = Array.from(document.querySelectorAll(".mesh-blob"), function (blob) {
+    return {
+      element: blob,
+      speed: parseFloat(getComputedStyle(blob).getPropertyValue("--blob-scroll-speed")) || 0.7
+    };
+  });
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   var parallaxFrame = 0;
 
   function updateParallax() {
     parallaxFrame = 0;
-    backgroundStage.style.setProperty("--scroll-parallax", (window.scrollY * 0.3) + "px");
+    parallaxBlobs.forEach(function (blob) {
+      var offset = window.scrollY * (1 - blob.speed);
+      blob.element.style.setProperty("--blob-parallax-y", offset + "px");
+    });
   }
 
   function scheduleParallax() {
     if (!parallaxFrame) parallaxFrame = window.requestAnimationFrame(updateParallax);
   }
 
-  if (backgroundStage && !reduceMotion.matches) {
+  if (parallaxBlobs.length && !reduceMotion.matches) {
     window.addEventListener("scroll", scheduleParallax, { passive: true });
     updateParallax();
   }

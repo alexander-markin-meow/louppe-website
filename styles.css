@@ -17,10 +17,10 @@
   --mesh-size: 1;
   --mesh-blur: 42px;
   --mesh-secondary: 0.27;
-  --drift-a: 28s;
-  --drift-b: 28s;
-  --drift-zoom: 0.14;
-  --grain-strength: 0.12;
+  --drift-a: 20s;
+  --drift-b: 27s;
+  --drift-zoom: 0.18;
+  --grain-strength: 0.075;
   --grain-rate: 840ms;
   --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
@@ -75,19 +75,26 @@ body {
     radial-gradient(calc(34% * var(--mesh-size)) calc(34% * var(--mesh-size)) at 62% 22%,
       color-mix(in srgb, var(--mesh-3) calc(var(--mesh-strength) * 73%), transparent), transparent 70%);
   filter: blur(var(--mesh-blur));
-  animation: background-drift var(--drift-a) ease-in-out infinite alternate;
+  animation: background-drift-front var(--drift-a) ease-in-out infinite alternate;
+  transform-origin: 44% 38%;
   will-change: transform;
 }
 
 .background-mesh::after {
   opacity: var(--mesh-secondary);
+  animation-name: background-drift-back;
   animation-duration: var(--drift-b);
-  animation-direction: alternate-reverse;
+  transform-origin: 62% 58%;
 }
 
-@keyframes background-drift {
-  from { transform: translate3d(-4%, -3%, 0) scale(1); }
-  to { transform: translate3d(5%, 4%, 0) scale(calc(1 + var(--drift-zoom))); }
+@keyframes background-drift-front {
+  from { transform: translate3d(-6%, -5%, 0) scale(0.98); }
+  to { transform: translate3d(8%, 6%, 0) scale(calc(1 + var(--drift-zoom))); }
+}
+
+@keyframes background-drift-back {
+  from { transform: translate3d(7%, -4%, 0) scale(1.10); }
+  to { transform: translate3d(-6%, 7%, 0) scale(0.96); }
 }
 
 .background-grain::before {
@@ -95,6 +102,7 @@ body {
   position: absolute;
   inset: -20%;
   background-image: var(--grain-url);
+  mix-blend-mode: screen;
   opacity: var(--grain-strength);
   animation: background-grain-shift var(--grain-rate) steps(1) infinite;
   will-change: transform;

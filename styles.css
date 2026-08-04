@@ -17,6 +17,13 @@
   --mesh-blur: 42px;
   --grain-strength: 0.16;
   --grain-rate: 840ms;
+  --edge-background:
+    linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82)),
+    var(--grain-url, none),
+    radial-gradient(circle at 14% 12%, var(--mesh-1), transparent 52%),
+    radial-gradient(circle at 86% 18%, var(--mesh-3), transparent 48%),
+    radial-gradient(circle at 22% 88%, color-mix(in srgb, var(--mesh-1) 78%, var(--mesh-3)), transparent 50%),
+    radial-gradient(circle at 82% 84%, color-mix(in srgb, var(--mesh-2) 76%, var(--mesh-3)), transparent 54%);
   --sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
   --page-max: 720px;
@@ -25,19 +32,17 @@
 
 * { box-sizing: border-box; }
 
-html {
+html,
+body::before {
   background-color: var(--bg);
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82)),
-    var(--grain-url, none),
-    radial-gradient(circle at 14% 12%, var(--mesh-1), transparent 52%),
-    radial-gradient(circle at 86% 18%, var(--mesh-3), transparent 48%),
-    radial-gradient(circle at 22% 88%, color-mix(in srgb, var(--mesh-1) 78%, var(--mesh-3)), transparent 50%),
-    radial-gradient(circle at 82% 84%, color-mix(in srgb, var(--mesh-2) 76%, var(--mesh-3)), transparent 54%);
+  background-image: var(--edge-background);
   background-attachment: fixed;
   background-blend-mode: normal, screen, normal, normal, normal, normal;
   background-position: center, 0 0, center, center, center, center;
   background-size: cover, 512px 512px, cover, cover, cover, cover;
+}
+
+html {
   -webkit-text-size-adjust: 100%;
 }
 
@@ -54,9 +59,17 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  z-index: 0;
+  inset: -100vh 0;
+  pointer-events: none;
+}
+
 .background-stage {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   inset: 0;
   overflow: hidden;
   contain: paint;
@@ -188,7 +201,7 @@ body {
 
 .page {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   min-height: 100svh;
   flex-direction: column;

@@ -1,10 +1,10 @@
 /* Shared document utility for louppe.eu. */
 (function () {
   var root = document.documentElement;
-  var grainSvg = "<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'>" +
-    "<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.5' " +
+  var grainSvg = "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'>" +
+    "<filter id='n' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.82' " +
     "numOctaves='4' stitchTiles='stitch'/></filter>" +
-    "<rect width='240' height='240' filter='url(#n)'/></svg>";
+    "<rect width='512' height='512' filter='url(#n)'/></svg>";
   root.style.setProperty("--grain-url", 'url("data:image/svg+xml,' + encodeURIComponent(grainSvg) + '")');
 
   var copyButton = document.querySelector("[data-copy-markdown]");

@@ -20,10 +20,11 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 
 ## background effect
 
-- fixed decorative stage behind the page, ignored by assistive technology and pointer input
-- mesh: 42px blur, 1× blob size, 0.36 strength, 0.27 second layer, distinct 20s/27s parallax paths, 0.18 drift zoom
+- document-length decorative stage behind the page, ignored by assistive technology and pointer input; it scrolls with content
+- six blobs distributed from hero to footer continue moving on distinct 20s/27s parallax paths
+- mesh: 42px blur, 1× blob size, 0.36 strength, 0.27 second layer, 0.18 drift zoom
 - colors: `#649d87`, `#534c74`, and `#a44642`, sampled from the chosen trial settings
-- grain: 0.075 strength, screen blended so it cannot muddy shadows, 840ms resample motion, 0.5 frequency, 4 octaves
+- grain: 512px tile, 0.065 strength, screen blended, 840ms resample motion, 0.82 frequency, 4 octaves, with added contrast for a crisp texture
 - disable mesh and grain motion when the visitor prefers reduced motion
 
 ## layout

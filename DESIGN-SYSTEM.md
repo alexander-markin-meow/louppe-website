@@ -1,32 +1,33 @@
 # louppe.eu design system
 
-Dark, serif, quiet, and compact. Static HTML + CSS with no build step.
+Bright, direct, and intentionally simple. Static HTML + CSS with no build step.
 
 ## voice
 
 - lowercase throughout, except proper nouns and technical names where lowercase is confusing
-- understated and direct; no exclamation marks or emoji
+- concise and practical; no exclamation marks or emoji
+- explain the product before explaining implementation details
 
 ## visual language
 
-- pure black background with warm grey text
-- olive is reserved for section headings and compact meta/subheader lines
-- Source Serif 4 for reading text; IBM Plex Mono for titles, headings, tags, and footer
-- 44px mono display title on desktop, 32px on mobile
-- 12px mono section headings and 11px mono row tags
-- dotted leaders connect row labels to their tags
-- borders use the existing warm-black inset palette; no shadows or gradients
+- warm near-white page with dark plum text
+- vivid purple is the sole accent color, used for headings, links, tags, and focus states
+- pale lavender surfaces distinguish supporting content without shadows or gradients
+- system sans-serif for display and reading text; IBM Plex Mono for compact labels, tags, and footer details
+- large, compact display title with simple type hierarchy beneath it
+- soft 12px corners and light purple-grey borders
 
 ## layout
 
-- centered 1100px page shell with a responsive two-column grid
-- 44px vertical and 64px horizontal grid rhythm
-- columns collapse naturally on narrow screens
-- footer uses a three-part mono grid and collapses to two columns on mobile
+- one centered reading column at every viewport width
+- 720px maximum content width with generous outer margins
+- sections follow one linear product story: introduction, features, demo, and download
+- feature items stay stacked and use light dividers instead of dotted leaders
+- footer is a simple flexible row and stacks only when space is tight
 
 ## page identity
 
-Louppe is the page's only display title. The compact olive line beneath it is the product
+Louppe is the page's only display title. The purple line beneath it is the product
 subheader. Alex Markin appears only as a quiet author link in the footer.
 
 ## assets

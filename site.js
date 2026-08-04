@@ -25,7 +25,7 @@
     var title = document.querySelector("h1");
     if (title) push(lines, "# ", title.textContent.trim());
 
-    document.querySelectorAll(".columns section").forEach(function (section) {
+    document.querySelectorAll(".stack section").forEach(function (section) {
       var heading = section.querySelector(".heading, .name");
       if (!heading) return;
       if (heading !== title) lines.push("", "## " + heading.textContent.trim(), "");

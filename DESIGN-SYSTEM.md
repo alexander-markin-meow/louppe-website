@@ -13,10 +13,10 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 - pure black base with the animated mesh-and-grain background adapted from the background trial
 - bright purple is the sole accent color, used for headings, links, tags, and focus states
 - the mesh uses muted teal, violet, and red blobs; these atmospheric colors are not reused as interface accents
-- translucent plum surfaces distinguish supporting content without shadows
+- the demo placeholder alone uses a neutral grey surface; feature and action lists remain open and unboxed
 - system sans-serif for display and reading text; IBM Plex Mono for compact labels, tags, and footer details
 - large, compact display title with close but non-overlapping letterforms and simple type hierarchy beneath it
-- soft 12px corners and quiet purple borders
+- soft 12px corners on the demo placeholder; no decorative dividers or action cards
 
 ## background effect
 
@@ -31,7 +31,8 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 - one centered reading column at every viewport width
 - 720px maximum content width with generous outer margins
 - sections follow one linear product story: introduction, features, demo, and download
-- feature items stay stacked and use light dividers instead of dotted leaders
+- feature items stay stacked with open spacing and no dividers
+- download and code are plain text rows, never cards or buttons
 - footer is a simple flexible row and stacks only when space is tight
 
 ## page identity

@@ -203,12 +203,12 @@ a[target="_blank"]::after {
 }
 
 .pubs {
-  border-top: 1px solid var(--border);
+  display: grid;
+  gap: 28px;
 }
 
 .pubs > li {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--border);
+  padding: 0;
 }
 
 .row {
@@ -240,10 +240,10 @@ a[target="_blank"]::after {
   min-height: 300px;
   margin-top: 0;
   padding: 32px;
-  border: 1px solid var(--border-accent);
+  border: 1px solid #505050;
   border-radius: var(--radius);
-  background: var(--surface);
-  color: var(--accent-dark);
+  background: rgba(38, 38, 38, 0.9);
+  color: #bcbcbc;
   font-family: var(--mono);
   font-size: 0.76rem;
   text-align: center;
@@ -255,25 +255,7 @@ a[target="_blank"]::after {
 }
 
 .links .row {
-  position: relative;
-  padding: 16px 18px;
-  border: 1px solid var(--border-accent);
-  border-radius: var(--radius);
-  background: var(--surface);
-}
-
-.links a {
-  text-decoration: none;
-}
-
-.links .row:has(a:hover) {
-  border-color: var(--accent);
-}
-
-.links .row > a:first-child::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+  padding: 0;
 }
 
 .footer {

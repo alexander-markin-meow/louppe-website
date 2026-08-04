@@ -140,7 +140,7 @@ body {
   font-size: clamp(3.75rem, 12vw, 6.5rem);
   font-weight: 650;
   line-height: 0.92;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.025em;
   text-transform: lowercase;
 }
 

@@ -15,7 +15,7 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 - the mesh uses muted teal, violet, and red blobs; these atmospheric colors are not reused as interface accents
 - translucent plum surfaces distinguish supporting content without shadows
 - system sans-serif for display and reading text; IBM Plex Mono for compact labels, tags, and footer details
-- large, compact display title with simple type hierarchy beneath it
+- large, compact display title with close but non-overlapping letterforms and simple type hierarchy beneath it
 - soft 12px corners and quiet purple borders
 
 ## background effect

@@ -11,21 +11,21 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>louppe — free photo and video culler for macOS</title>
-  <meta name="description" content="photo and video culler for macOS. open source and keyboard-first." />
+  <title>louppe — free, local photo and video culler for macOS</title>
+  <meta name="description" content="a free, local, keyboard-first photo and video culler for Apple silicon Macs. no account or telemetry." />
   <meta name="author" content="alex markin" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://louppe.eu/" />
 
-  <meta property="og:title" content="louppe — free photo and video culler for macOS" />
-  <meta property="og:description" content="photo and video culler for macOS. open source and keyboard-first." />
+  <meta property="og:title" content="louppe — free, local photo and video culler for macOS" />
+  <meta property="og:description" content="a free, local, keyboard-first photo and video culler for Apple silicon Macs. no account or telemetry." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://louppe.eu/" />
   <meta property="og:site_name" content="louppe" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="louppe — free photo and video culler for macOS" />
-  <meta name="twitter:description" content="photo and video culler for macOS. open source and keyboard-first." />
+  <meta name="twitter:title" content="louppe — free, local photo and video culler for macOS" />
+  <meta name="twitter:description" content="a free, local, keyboard-first photo and video culler for Apple silicon Macs. no account or telemetry." />
 
   <script type="application/ld+json">
     {
@@ -34,12 +34,12 @@
       "@id": "https://louppe.eu/#app",
       "url": "https://louppe.eu/",
       "name": "louppe",
-      "description": "photo and video culler for macOS. open source and keyboard-first.",
+      "description": "a free, local, keyboard-first photo and video culler for Apple silicon Macs. no account or telemetry.",
       "applicationCategory": "MultimediaApplication",
       "operatingSystem": "macOS",
       "isAccessibleForFree": true,
       "sameAs": "https://github.com/alexander-markin-meow/louppe",
-      "downloadUrl": "https://github.com/alexander-markin-meow/louppe/releases",
+      "downloadUrl": "https://github.com/alexander-markin-meow/louppe/releases/latest/download/Louppe.zip",
       "author": {
         "@type": "Person",
         "@id": "https://alex-markin.com/#alex-markin",
@@ -71,8 +71,8 @@
     <div class="stack">
       <section class="intro" aria-labelledby="louppe-title">
         <h1 class="name" id="louppe-title">louppe</h1>
-        <p class="meta">photo &amp; video culler • open source • keyboard-first • macOS</p>
-        <p class="desc">open folder, filter, review, rate, clean up or export</p>
+        <p class="meta">free photo &amp; video culler • local • keyboard-first • macOS</p>
+        <p class="desc">review a folder or memory card, choose what to keep, then export without importing into a catalog</p>
       </section>
 
       <section>
@@ -80,41 +80,81 @@
         <ul class="pubs">
           <li>
             <div class="row"><span>fully keyboard workflow</span><span class="tag">keys</span></div>
-            <div class="desc">f = keep, d = cull, arrow keys to move</div>
+            <div class="desc">f = keep, d = cull, arrows to move, space to play or pause video</div>
           </li>
           <li>
-            <div class="row"><span>detailed filtering</span><span class="tag">files</span></div>
-            <div class="desc">filter and group by camera, lens, settings, etc</div>
+            <div class="row"><span>photo and video, including raw</span><span class="tag">formats</span></div>
+            <div class="desc">common camera raw files including NEF, RAF, CR2 and ARW, plus JPEG, TIFF, PNG, HEIC, WebP, AVIF, and macOS-supported video</div>
+          </li>
+          <li>
+            <div class="row"><span>metadata filters and close inspection</span><span class="tag">review</span></div>
+            <div class="desc">filter by camera, lens, settings, date, file type, media type, or video length; inspect at true 100%, with histogram and clipping warnings</div>
           </li>
           <li>
             <div class="row"><span>safe exports and cleanup</span><span class="tag">safety</span></div>
-            <div class="desc">export keepers to a new folder or trash rejects</div>
+            <div class="desc">copy keepers to a new folder by default, or deliberately move files and send rejects to the macOS Trash</div>
           </li>
           <li>
-            <div class="row"><span>native and open source</span><span class="tag">code</span></div>
-            <div class="desc">built in SwiftUI, free to use, with automatic updates</div>
+            <div class="row"><span>local, open, and private</span><span class="tag">privacy</span></div>
+            <div class="desc">100% local, with no account and no telemetry. free and open source under the MIT License.</div>
           </li>
         </ul>
       </section>
 
       <section>
-        <h2 class="heading">demo</h2>
-        <div class="demo-placeholder desc" role="img" aria-label="louppe culling demo gif coming soon">
-          <span>cull loop · demo gif coming soon</span>
-        </div>
+        <h2 class="heading">requirements and first run</h2>
+        <ul class="pubs">
+          <li>
+            <div class="row"><span>macOS 14 or later</span><span class="tag">system</span></div>
+            <div class="desc">the current download is for Apple silicon. Intel Macs are not supported by this build.</div>
+          </li>
+          <li>
+            <div class="row"><span>one small first-run step</span><span class="tag">install</span></div>
+            <div class="desc">unzip Louppe.zip and drag Louppe into Applications. because the app is not notarized yet, right-click it, choose Open, then choose Open again the first time.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="heading">how it compares</h2>
+        <ul class="pubs">
+          <li>
+            <div class="row"><span>no extra setup for raw</span><span class="tag">rawcull</span></div>
+            <div class="desc">rawcull needs Homebrew and dcraw for full raw support. louppe is a self-contained download.</div>
+          </li>
+          <li>
+            <div class="row"><span>metadata-aware culling</span><span class="tag">culltrain</span></div>
+            <div class="desc">culltrain does not offer EXIF filtering. louppe lets you filter and sort around the camera details that matter to a shoot.</div>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="heading">next</h2>
+        <ul class="pubs">
+          <li>
+            <div class="row"><span>XMP sidecar export</span><span class="tag">in progress</span></div>
+            <div class="desc">the XMP compatibility foundation is in place; writing ratings and labels for Lightroom, Bridge, Capture One, and darktable is next.</div>
+          </li>
+          <li>
+            <div class="row"><span>duplicate finding and grouping</span><span class="tag">roadmap</span></div>
+            <div class="desc">louppe already pairs unambiguous RAW+JPEG matches. broader duplicate finding and automatic grouping are still to come.</div>
+          </li>
+        </ul>
       </section>
 
       <section>
         <h2 class="heading">get louppe</h2>
         <ul class="links">
-          <li class="row"><a href="https://github.com/alexander-markin-meow/louppe/releases" target="_blank" rel="noopener">download for mac</a><span class="tag">download</span></li>
-          <li class="row"><a href="https://github.com/alexander-markin-meow/louppe" target="_blank" rel="noopener">view app code</a><span class="tag">code</span></li>
+          <li class="row"><a href="https://github.com/alexander-markin-meow/louppe/releases/latest/download/Louppe.zip" target="_blank" rel="noopener">download Louppe.zip for mac</a><span class="tag">macOS 14+</span></li>
+          <li class="row"><a href="https://github.com/alexander-markin-meow/louppe/releases" target="_blank" rel="noopener">all releases</a><span class="tag">archive</span></li>
+          <li class="row"><a href="https://github.com/alexander-markin-meow/louppe" target="_blank" rel="noopener">view app code</a><span class="tag">MIT</span></li>
         </ul>
       </section>
     </div>
 
     <footer class="footer">
-      <a class="footer-date" href="https://github.com/alexander-markin-meow/louppe-website" target="_blank" rel="noopener">last upd 2026-08-04</a>
+      <a class="footer-date" href="https://github.com/alexander-markin-meow/louppe/releases" target="_blank" rel="noopener">app v1.6.0 · 2026-07-17</a>
       <button class="copy-markdown" type="button" data-copy-markdown aria-live="polite">copy as markdown</button>
       <a class="footer-domain" href="https://alex-markin.com/" target="_blank" rel="author noopener">by alex markin</a>
     </footer>

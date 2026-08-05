@@ -22,7 +22,7 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 
 - document-length decorative stage behind the page, ignored by assistive technology and pointer input
 - the stage's own blob and grain paint overflow extends a viewport beyond both page edges so rubber-band overscroll is seamless
-- on scroll each blob travels at its own fixed ratio between 0.55× and 0.85× of content speed
+- on scroll each blob travels at its own fixed ratio between 0.40× and 0.80× of content speed
 - six independent blobs run distinct 22–38s animations with different sizes, directions, scale changes, and phases
 - mesh blobs retain a 42px blur and use varied opacity rather than a duplicated second layer
 - colors: six subtle mixes derived from `#649d87`, `#534c74`, and `#a44642`, sampled from the chosen trial settings

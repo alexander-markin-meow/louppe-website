@@ -84,7 +84,7 @@ body {
   --blob-opacity: 1;
   --blob-speed: 22s;
   --blob-delay: -7s;
-  --blob-scroll-speed: 0.58;
+  --blob-scroll-speed: 0.42;
   --from-x: -8%; --from-y: -4%; --from-scale: 0.95;
   --to-x: 12%; --to-y: 8%; --to-scale: 1.12;
   top: -8%; left: -15%;
@@ -96,7 +96,7 @@ body {
   --blob-opacity: 0.86;
   --blob-speed: 31s;
   --blob-delay: -19s;
-  --blob-scroll-speed: 0.83;
+  --blob-scroll-speed: 0.78;
   --from-x: 8%; --from-y: -6%; --from-scale: 1.08;
   --to-x: -12%; --to-y: 9%; --to-scale: 0.94;
   top: 3%; right: -8%;
@@ -108,7 +108,7 @@ body {
   --blob-opacity: 0.92;
   --blob-speed: 25s;
   --blob-delay: -4s;
-  --blob-scroll-speed: 0.67;
+  --blob-scroll-speed: 0.56;
   --from-x: -10%; --from-y: 8%; --from-scale: 0.92;
   --to-x: 8%; --to-y: -10%; --to-scale: 1.15;
   top: 25%; left: 48%;
@@ -120,7 +120,7 @@ body {
   --blob-opacity: 0.78;
   --blob-speed: 34s;
   --blob-delay: -24s;
-  --blob-scroll-speed: 0.76;
+  --blob-scroll-speed: 0.69;
   --from-x: -6%; --from-y: 10%; --from-scale: 1.05;
   --to-x: 15%; --to-y: -7%; --to-scale: 0.90;
   top: 47%; left: -12%;
@@ -132,7 +132,7 @@ body {
   --blob-opacity: 0.74;
   --blob-speed: 28s;
   --blob-delay: -12s;
-  --blob-scroll-speed: 0.55;
+  --blob-scroll-speed: 0.40;
   --from-x: 12%; --from-y: 6%; --from-scale: 0.96;
   --to-x: -8%; --to-y: -12%; --to-scale: 1.13;
   top: 63%; right: -14%;
@@ -144,7 +144,7 @@ body {
   --blob-opacity: 0.82;
   --blob-speed: 38s;
   --blob-delay: -29s;
-  --blob-scroll-speed: 0.85;
+  --blob-scroll-speed: 0.80;
   --from-x: -12%; --from-y: -6%; --from-scale: 1.10;
   --to-x: 10%; --to-y: 12%; --to-scale: 0.93;
   top: 79%; left: 18%;

@@ -224,6 +224,31 @@ body {
   font-size: 1.08rem;
 }
 
+.intro-download {
+  margin: 18px 0 0;
+}
+
+.download-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 9px 14px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #150d22;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.download-button:hover {
+  background: var(--accent-dark);
+  color: #150d22;
+}
+
+.download-button:focus-visible {
+  outline-color: var(--accent-dark);
+}
+
 .heading {
   margin: 0 0 20px;
   color: var(--accent);

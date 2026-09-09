@@ -1,4 +1,4 @@
-# louppe.eu design system
+# louppe media culler website design system
 
 Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 
@@ -40,8 +40,9 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 
 ## page identity
 
-Louppe is the page's only display title. The purple line beneath it is the product
-subheader. Alex Markin appears only as a quiet author link in the footer.
+Louppe Media Culler is the page's only display title. The purple line beneath it
+is the product subheader. The installed app remains Louppe. Alex Markin appears
+only as a quiet author link in the footer.
 
 ## assets
 

@@ -2,7 +2,7 @@
 
 > a free, open-source, local, keyboard-first photo, video, and audio culler for macOS. the app itself is named Louppe.
 
-review in Gallery or Grid with decisions, stars, color labels, filters and selection. analyze exact duplicates, likely similar photos and capture bursts locally. group RAW+JPEG pairs, inspect at 100%, and play video or audio. clean up to macOS Trash, organize folders, rename from metadata, then copy or move your keepers. route copies to multiple folders and use XMP sidecars for portable metadata.
+review in Gallery or Grid with decisions, stars, color labels, filters and selection. analyze exact duplicates, likely similar photos and capture bursts locally. group RAW+JPEG pairs, inspect at 100%, and play video or audio. clean up to macOS Trash, organize folders, then copy or move your keepers. route copies to multiple folders and use XMP sidecars for portable metadata.
 
 - [website](https://louppe.eu/): product overview, features, and download
 - [privacy](https://louppe.eu/privacy/): app and website privacy practices

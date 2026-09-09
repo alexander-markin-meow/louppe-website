@@ -201,9 +201,9 @@ body {
 .name {
   margin: 0;
   color: var(--ink);
-  font-size: clamp(3.75rem, 12vw, 6.5rem);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
   font-weight: 650;
-  line-height: 0.92;
+  line-height: 1.05;
   letter-spacing: -0.025em;
   text-transform: lowercase;
 }

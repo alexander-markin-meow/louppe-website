@@ -10,6 +10,7 @@ Static HTML, CSS, and JavaScript with no build step. GitHub Pages publishes the
 ## files
 
 - `index.html` — page content and metadata
+- `favicon.ico`, `favicon.png` — browser icons from the app’s purple grid artwork
 - `styles.css` — the visual system
 - `site.js` — copy-as-markdown utility
 - `CNAME` — GitHub Pages custom domain

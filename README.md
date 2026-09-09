@@ -10,7 +10,6 @@ Static HTML, CSS, and JavaScript with no build step. GitHub Pages publishes the
 ## files
 
 - `index.html` — page content and metadata
-- `privacy/index.html` — privacy policy for the app and website
 - `styles.css` — the visual system
 - `site.js` — copy-as-markdown utility
 - `CNAME` — GitHub Pages custom domain

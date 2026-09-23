@@ -2,14 +2,6 @@
 <html lang="en">
 <head>
   <meta name="google-site-verification" content="NQwtKXHYjBrgdiXlCzCHXxTRcErFzTRZhjmtbKmuzRI" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9P9KKLZ5BN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9P9KKLZ5BN');
-  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>louppe media culler — free photo, video &amp; audio culling for macOS</title>
@@ -66,7 +58,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=20260909" />
+  <link rel="stylesheet" href="/styles.css?v=20260923" />
 </head>
 <body>
   <div class="background-stage" aria-hidden="true">
@@ -155,10 +147,28 @@
     <footer class="footer">
       <a class="footer-date" href="https://github.com/alexander-markin-meow/louppe-media-culler/releases" target="_blank" rel="noopener">release notes</a>
       <button class="copy-markdown" type="button" data-copy-markdown aria-live="polite">copy as markdown</button>
+      <button type="button" class="footer-action" data-analytics-settings>privacy &amp; analytics</button>
       <a class="footer-domain" href="https://alex-markin.com/" target="_blank" rel="author noopener">by alex markin</a>
     </footer>
   </main>
 
+  <aside class="analytics-consent" id="analytics-consent" aria-labelledby="analytics-consent-title" hidden>
+    <div class="analytics-consent-copy">
+      <h2 id="analytics-consent-title">optional website analytics</h2>
+      <p>Alex Markin uses Google Analytics (Google LLC) to count visits and see which pages people use. if you allow it, Google receives page and browser or device information and sets analytics cookies. you can say no and change your choice anytime.</p>
+      <details class="analytics-details">
+        <summary>more details</summary>
+        <p>the analytics cookies <code>_ga</code> and <code>_ga_*</code> expire after 30 days without renewal. your choice stays in this browser for 180 days. withdrawing consent stops analytics and clears those cookies. advertising features are off. the Louppe app has no telemetry.</p>
+        <p>this website is hosted on GitHub Pages and loads IBM Plex Mono from Google Fonts; those services receive page requests regardless of your analytics choice. see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google’s privacy policy</a>. questions: <a href="mailto:a@alex-markin.com">a@alex-markin.com</a>.</p>
+      </details>
+    </div>
+    <div class="analytics-consent-actions">
+      <button type="button" data-analytics-choice="rejected">no analytics</button>
+      <button type="button" data-analytics-choice="accepted">allow analytics</button>
+    </div>
+  </aside>
+
+  <script src="/analytics-consent.js?v=20260923"></script>
   <script src="/site.js?v=20260804-5"></script>
 </body>
 </html>

@@ -358,6 +358,91 @@ a[target="_blank"]::after {
   color: var(--accent-dark);
 }
 
+.footer-action {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--border-accent);
+  text-underline-offset: 0.22em;
+  cursor: pointer;
+}
+
+.footer-action:hover {
+  color: var(--accent-dark);
+  text-decoration-color: currentColor;
+}
+
+.analytics-consent {
+  position: fixed;
+  z-index: 10;
+  bottom: 20px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  width: min(calc(100% - 32px), 900px);
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+  padding: 18px 20px;
+  transform: translateX(-50%);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius);
+  background: #17111f;
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.65);
+}
+
+.analytics-consent[hidden] { display: none; }
+.analytics-consent-copy { max-width: 490px; }
+.analytics-consent h2 {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: lowercase;
+}
+
+.analytics-consent p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.analytics-details { margin-top: 6px; }
+.analytics-details summary {
+  color: var(--accent-dark);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+.analytics-details p { margin-top: 9px; }
+.analytics-details code { font-family: var(--mono); font-size: 0.9em; }
+
+.analytics-consent-actions { display: flex; flex: none; gap: 8px; }
+.analytics-consent-actions button {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-accent);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.analytics-consent-actions button:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
 .copy-markdown {
   margin: 0;
   padding: 5px 9px;
@@ -401,6 +486,17 @@ a[target="_blank"]::after {
     order: -1;
     width: 100%;
   }
+
+  .analytics-consent {
+    bottom: 12px;
+    display: block;
+    width: calc(100% - 24px);
+    max-height: calc(100vh - 24px);
+    padding: 16px;
+  }
+
+  .analytics-consent-actions { margin-top: 14px; }
+  .analytics-consent-actions button { flex: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -249,6 +249,31 @@ body {
   outline-color: var(--accent-dark);
 }
 
+.author-support { margin: 20px 0 0; }
+
+.support-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 9px 14px;
+  border: 1px solid var(--border-accent);
+  border-radius: 8px;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.support-button:hover {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+.support-note {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
 .heading {
   margin: 0 0 20px;
   color: var(--accent);

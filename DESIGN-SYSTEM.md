@@ -42,7 +42,7 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 
 Louppe Media Culler is the page's only display title. The purple line beneath it
 is the product subheader. The installed app remains Louppe. Alex Markin is
-credited in the page's author section, which can later hold a support link.
+credited in the page's author section, with a quiet optional support link.
 
 ## assets
 

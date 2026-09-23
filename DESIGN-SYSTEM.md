@@ -33,7 +33,7 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 
 - one centered reading column at every viewport width
 - 720px maximum content width with generous outer margins
-- sections follow one linear product story: introduction, features, demo, and download
+- sections follow one linear product story: introduction, features, requirements, download, and author
 - feature items stay stacked with open spacing and no dividers
 - download and code are plain text rows, never cards or buttons
 - footer is a simple flexible row and stacks only when space is tight
@@ -41,8 +41,8 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 ## page identity
 
 Louppe Media Culler is the page's only display title. The purple line beneath it
-is the product subheader. The installed app remains Louppe. Alex Markin appears
-only as a quiet author link in the footer.
+is the product subheader. The installed app remains Louppe. Alex Markin is
+credited in the page's author section, which can later hold a support link.
 
 ## assets
 

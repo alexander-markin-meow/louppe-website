@@ -18,9 +18,10 @@ test('draft isolation, publication, validation and withdrawal', async () => {
     const run = (...args) => spawnSync(process.execPath,['scripts/build-blog.mjs',...args],{cwd:root,encoding:'utf8'});
     const record = {slug:'sample',title:'One & two',description:'A "quoted" description',file:'sample.md',status:'published',date:'2026-01-01',cta:{label:'try Louppe',href:'https://louppe.eu/'}};
     await save('content/posts.json',JSON.stringify([record]));
-    await save('content/posts/sample.md','A published paragraph');
+    const articleBody = 'A published paragraph\n\n<!-- try-louppe -->\n\nA closing paragraph';
+    await save('content/posts/sample.md',articleBody);
     await save('.drafts/posts.json',JSON.stringify([{...record,slug:'unreleased',status:'draft',file:'draft.md'}]));
-    await save('.drafts/draft.md','PRIVATE_DRAFT_SENTINEL');
+    await save('.drafts/draft.md','PRIVATE_DRAFT_SENTINEL\n\n<!-- try-louppe -->\n\nA closing draft paragraph');
     assert.equal(run().status,0);
     const publicPage = await load('blog/sample/index.html');
     assert.match(publicPage,/One &amp; two/);
@@ -29,6 +30,16 @@ test('draft isolation, publication, validation and withdrawal', async () => {
     assert.ok(publicPage.indexOf('A published paragraph') < publicPage.indexOf('class="article-author"'));
     assert.doesNotMatch(publicPage,/RSS|application\/rss\+xml|class="post-header"[^]*?rel="author"[^]*?<\/header>/);
     assert.match(publicPage,/try Louppe/);
+    assert.equal((publicPage.match(/class="download-button"/g) ?? []).length,2);
+    assert.ok(publicPage.indexOf('class="article-cta"') > publicPage.indexOf('A published paragraph'));
+    assert.ok(publicPage.indexOf('class="article-cta"') < publicPage.indexOf('A closing paragraph'));
+    assert.ok(publicPage.lastIndexOf('class="article-cta"') > publicPage.indexOf('class="article-author"'));
+    for (const invalidBody of ['No CTA', '<!-- try-louppe -->Only after', 'Only before<!-- try-louppe -->']) {
+      await save('content/posts/sample.md',invalidBody);
+      assert.notEqual(run().status,0);
+      assert.equal(await load('blog/sample/index.html'),publicPage);
+    }
+    await save('content/posts/sample.md',articleBody);
     await assert.rejects(load('blog/feed.xml'),{code:'ENOENT'});
     assert.doesNotMatch(await load('sitemap.xml'),/unreleased/);
     assert.doesNotMatch(await load('blog/index.html'),/rel="author"|post-meta/);

@@ -22,6 +22,8 @@ Some of the changes are small: a more compact start window, a folder you can dro
 
 I don't expect one update to make everything obvious. But I want fewer moments where you have to stop and work out what the app is asking you to do
 
+<!-- try-louppe -->
+
 ## a small project, with a bit more attention
 
 Seeing people download Louppe makes me want to give it more care. It's still an independent project, and I'm still figuring out what it should become. But it isn't only something sitting on my own Mac anymore

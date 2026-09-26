@@ -63,7 +63,14 @@ Each metadata record contains:
 ```
 
 The shared article layout has one Alex Markin byline after the text, linked to
-https://alex-markin.com/, followed by a centered call-to-action button without small print. The body uses natural
+https://alex-markin.com/, followed by a centered call-to-action button without small print.
+**Every article must contain at least two calls to action.** Put `<!-- try-louppe -->`
+on its own line at a natural pause around the middle of the Markdown. The generator
+renders it as a centered Try Louppe button using the post's CTA metadata and always
+adds another after the byline. Builds fail if the in-article marker is missing or
+has no article text before or after it. Additional markers are supported when useful.
+
+The body uses natural
 sentence case and contractions, while retaining the site's punctuation preference:
 periods between sentences, none at the ends of headings or paragraphs.
 

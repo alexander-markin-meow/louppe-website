@@ -25,7 +25,9 @@ async function loadPosts(manifest, directory, draft = false) {
     if (!/^(https:\/\/|mailto:)/.test(post.cta.href ?? '')) throw new Error(`Invalid CTA URL for ${post.slug}`);
     const body = await read(`${directory}/${post.file}`);
     if (!body.trim()) throw new Error(`Empty article: ${post.slug}`);
-    return {...post, draft, body, html:marked.parse(body), path:`/blog/${post.slug}/`};
+    const sections = body.split('<!-- try-louppe -->');
+    if (sections.length < 2 || sections.some(section => !section.trim())) throw new Error(`Add a Try Louppe CTA between article sections: ${post.slug}`);
+    return {...post, draft, body, html:sections.map(section => marked.parse(section)).join(callToAction(post)), path:`/blog/${post.slug}/`};
   }));
 }
 
@@ -48,6 +50,9 @@ function page({title,description,path,content,post}) {
   const values = {title:escape(title),description:escape(description),discovery:robots,structured:schema,type:post?'article':'website',current:post?'false':'page',content};
   return template.replace(/\{\{(\w+)\}\}/g, (_, key) => values[key]).replace(/^[ \t]+$/gm, '');
 }
+function callToAction(post) {
+  return `<aside class="article-cta" aria-label="Try Louppe"><a class="download-button" href="${escape(post.cta.href)}">${escape(post.cta.label)}</a></aside>`;
+}
 function byline() {
   return `<div class="post-meta"><a href="https://alex-markin.com/" rel="author">Alex Markin</a></div>`;
 }
@@ -55,7 +60,7 @@ const listing = posts.length ? `<ol class="post-list">${posts.map(post => `<li><
 const index = page({title:'blog',description:'Notes on making Louppe, new releases, and finding what you want to keep. By Alex Markin.',path:'/blog/',content:`<header class="blog-heading"><h1>notes on Louppe</h1><p>on making a small app, and finding what to keep</p></header>${listing}`});
 const generated = {'blog/index.html':index};
 for (const post of posts) {
-  generated[`blog/${post.slug}/index.html`] = page({title:post.title,description:post.description,path:post.path,post,content:`<a class="article-back" href="/blog/">all notes</a><article><header class="post-header"><h1>${escape(post.title)}</h1><p class="post-deck">${escape(post.description)}</p></header><div class="article-body">${post.html}</div><footer class="article-author">${byline()}</footer><aside class="article-cta" aria-label="Try Louppe"><a class="download-button" href="${escape(post.cta.href)}">${escape(post.cta.label)}</a></aside></article>`});
+  generated[`blog/${post.slug}/index.html`] = page({title:post.title,description:post.description,path:post.path,post,content:`<a class="article-back" href="/blog/">all notes</a><article><header class="post-header"><h1>${escape(post.title)}</h1><p class="post-deck">${escape(post.description)}</p></header><div class="article-body">${post.html}</div><footer class="article-author">${byline()}</footer>${callToAction(post)}</article>`});
 }
 
 if (preview) {

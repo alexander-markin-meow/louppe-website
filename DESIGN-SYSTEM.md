@@ -60,7 +60,7 @@ for changed CSS/JavaScript. Keep CNAME, crawler metadata and download URLs intac
 - One quiet byline after the article, linked to Alex Markin’s website; none on the index
 - One divider above the site footer; no other divider lines on blog pages
 - No visible local-preview or draft notices
-- Center the “Try Louppe” button below the byline; no extra CTA small print
+- Every article must have at least two centered “Try Louppe” buttons: one within the article and one below the byline; no extra CTA small print
 - Keep a descriptive subtitle with natural search terms
 - No RSS feed or subscription features
 - Drafts are local previews, never public posts until explicitly approved

@@ -228,6 +228,20 @@ body {
   margin: 18px 0 0;
 }
 
+.download-requirements {
+  margin: 8px 0 0;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+}
+
+.download-install {
+  max-width: 610px;
+  margin: 5px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+}
+
 .download-button {
   display: inline-flex;
   align-items: center;
@@ -298,7 +312,7 @@ a:hover {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid var(--surface-strong);
+  outline: 3px solid var(--accent);
   outline-offset: 4px;
 }
 
@@ -335,20 +349,24 @@ a[target="_blank"]::after {
   font-size: 0.96rem;
 }
 
-.demo-placeholder {
-  display: grid;
-  place-items: center;
-  min-height: 300px;
-  margin-top: 0;
-  padding: 32px;
-  border: 1px solid #505050;
-  border-radius: var(--radius);
-  background: rgba(38, 38, 38, 0.9);
-  color: #bcbcbc;
-  font-family: var(--mono);
-  font-size: 0.76rem;
-  text-align: center;
-}
+.walkthrough > .desc { margin: 0 0 18px; }
+
+/* Genuine screenshots keep their complete app framing at every screen size. */
+.app-shot { margin: 22px 0 0; }
+.app-shot a { display: block; border-radius: var(--radius); }
+.app-shot img { display: block; width: 100%; height: auto; border-radius: var(--radius); background: #202020; }
+.app-shot figcaption { margin-top: 9px; color: var(--ink-soft); font-size: 0.84rem; }
+.media-note { margin: 10px 0 0; color: var(--ink-soft); font-size: 0.8rem; line-height: 1.55; }
+kbd { font-family: var(--mono); font-size: 0.92em; color: var(--accent-dark); }
+.video-demo { margin-top: 24px; }
+.video-demo summary { color: var(--accent-dark); cursor: pointer; padding: 10px 0; }
+.video-demo video { display: block; width: 100%; height: auto; margin-top: 12px; background: #101013; border-radius: var(--radius); }
+.demo-download { color: var(--ink-soft); font-size: 0.84rem; }
+.demo-transcript { margin-top: 14px; font-size: 0.9rem; color: var(--ink-soft); }
+.demo-transcript ol { padding-left: 23px; line-height: 1.7; }
+.demo-transcript li + li { margin-top: 6px; }
+.author-contact { margin-top: 16px; font-size: 0.9rem; }
+summary:focus-visible, video:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 
 .links {
   display: grid;
@@ -500,7 +518,8 @@ a[target="_blank"]::after {
   .stack { gap: 52px; }
   .meta { margin-top: 22px; }
   .row { gap: 12px; }
-  .demo-placeholder { min-height: 220px; }
+  .demo { padding: 11px; }
+  .demo-topline { font-size: 0.62rem; }
 
   .footer {
     align-items: flex-start;

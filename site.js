@@ -33,6 +33,15 @@
     updateParallax();
   }
 
+  var videoDemo = document.querySelector(".video-demo");
+  if (videoDemo) {
+    if (location.hash === "#review-demo") videoDemo.open = true;
+    videoDemo.addEventListener("toggle", function () {
+      var video = videoDemo.querySelector("video");
+      if (!videoDemo.open && video) video.pause();
+    });
+  }
+
   var copyButton = document.querySelector("[data-copy-markdown]");
   if (!copyButton) return;
 
@@ -63,10 +72,21 @@
       if (!heading) return;
       if (heading !== title) lines.push("", "## " + heading.textContent.trim(), "");
 
-      section.querySelectorAll(":scope > .meta, :scope > .desc").forEach(function (prose) {
+      section.querySelectorAll(":scope > .meta, :scope > .desc, :scope > .intro-download, :scope > .download-requirements, :scope > .download-install, :scope > .media-note").forEach(function (prose) {
         push(lines, "", inlineMarkdown(prose));
       });
 
+      section.querySelectorAll(".app-shot").forEach(function (figure) {
+        var image = figure.querySelector("img");
+        var caption = figure.querySelector("figcaption");
+        if (image) lines.push("", "![" + image.alt + "](" + image.src + ")");
+        if (caption) push(lines, "", inlineMarkdown(caption));
+      });
+      var video = section.querySelector("video source");
+      if (video) lines.push("", "[25-second walkthrough](" + video.src + ")");
+      section.querySelectorAll(".demo-transcript li").forEach(function (step, index) {
+        lines.push((index + 1) + ". " + inlineMarkdown(step));
+      });
       section.querySelectorAll(":scope > ul > li").forEach(function (item) {
         var row = item.matches(".row") ? item : item.querySelector(":scope > .row");
         if (!row) return;

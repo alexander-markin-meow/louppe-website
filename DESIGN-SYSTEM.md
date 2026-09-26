@@ -13,10 +13,10 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 - pure black base with the animated mesh-and-grain background adapted from the background trial
 - bright purple is the sole accent color, used for headings, links, tags, and focus states
 - the mesh uses muted teal, violet, and red blobs; these atmospheric colors are not reused as interface accents
-- the demo placeholder alone uses a neutral grey surface; feature and action lists remain open and unboxed
+- the real app preview alone uses a neutral grey surface; feature and action lists remain open and unboxed
 - system sans-serif for display and reading text; IBM Plex Mono for compact labels, tags, and footer details
 - large, compact display title with close but non-overlapping letterforms and simple type hierarchy beneath it
-- soft 12px corners on the demo placeholder; no decorative dividers or action cards
+- soft 12px corners on screenshots and video; no decorative dividers or action cards
 
 ## background effect
 
@@ -33,7 +33,8 @@ Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
 
 - one centered reading column at every viewport width
 - 720px maximum content width with generous outer margins
-- sections follow one linear product story: introduction, features, requirements, download, and author
+- sections follow one linear product story: introduction, real app preview, features, download, and author
+- system requirements and first-run trust copy sit beside the first download link
 - feature items stay stacked with open spacing and no dividers
 - download and code are plain text rows, never cards or buttons
 - footer is a simple flexible row and stacks only when space is tight
@@ -46,8 +47,14 @@ credited in the page's author section, with a quiet optional support link.
 
 ## assets
 
-The demo uses `.demo-placeholder` until a real screenshot or GIF is ready. Replace the
-placeholder with the real media rather than preserving it alongside the asset.
+Use two genuine native screenshots: Gallery with Information, then Grid. Keep
+captions useful and images linked to full-size versions. A user-controlled
+25-second walkthrough stays in a disclosure below them; no autoplay. Include
+English captions, a written walkthrough, and a direct video download.
+
+Label captures from an upcoming interface with its version; the download remains
+the current published release. Publish only the selected web derivatives. Store
+candidates and original shoot files remain outside the public repositories.
 
 ## cache busting
 

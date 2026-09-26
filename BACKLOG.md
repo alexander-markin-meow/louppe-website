@@ -6,17 +6,11 @@ always describe the latest released app rather than the app worktree.
 
 ## Before the public launch
 
-- [ ] Create the shared visual asset set: a 1200×630 Open Graph image,
-  favicon/app-icon web assets, at least one Gallery screenshot, one Grid
-  screenshot, and—only if it represents the current app well—a short demo GIF.
-- [ ] Add the Open Graph image metadata and remove unused Twitter-only metadata.
-- [ ] Bring the page fully up to the public 1.7.0 release:
-  - correct the footer, which still says `v1.6.0 · 2026-07-17`;
-  - mention stars and colour labels;
-  - make native video review a first-class feature;
-  - describe XMP as beta and state that video-sidecar round-tripping is not
-    included;
-  - mention automatic updates accurately.
+- [x] Publish a restrained visual set: Gallery, Grid, a captioned 25-second
+  walkthrough, and a 1200×630 sharing image. Future App Store candidates stay local.
+- [x] Add Open Graph and large-image Twitter metadata using the sharing image.
+- [x] Keep the download and product claims aligned with public version 1.8.0.
+  Captures from the upcoming 1.9 interface are labelled as previews.
 - [ ] Add a short comparison section covering local operation, no account,
   no Homebrew dependency, metadata filtering, and XMP handoff.
 
@@ -24,7 +18,7 @@ always describe the latest released app rather than the app worktree.
 
 - [ ] Run the existing publicity plan after the visual assets and release-copy
   checks are complete.
-- [ ] Add a donation link after Revolut is ready.
+- [x] Add the optional Revolut donation link.
 
 ## Routine maintenance
 
@@ -32,13 +26,13 @@ always describe the latest released app rather than the app worktree.
   feature claims as part of the same release pass.
 - [ ] Keep screenshots, requirements, download links, and first-run
   instructions aligned with the published build.
-- [ ] Do not promote unreleased app features. The current app worktree is
-  version 1.8.0, so the site should continue to describe 1.7.0 until 1.8.0 is
-  published.
+- [ ] Do not advertise unreleased features as available in the download. After
+  1.9 ships, remove the preview notices from the website, README, and media notes
+  and update the release reference in `llms.txt`.
 
 ## Completed baseline
 
 The site already has a direct release download, first-run guidance, macOS and
-Apple-silicon requirements, named RAW formats, privacy and MIT-license claims,
-and a small public roadmap. Keep those claims maintained rather than reopening
+Apple-silicon requirements, privacy and MIT-license claims, real app previews,
+and an optional captioned walkthrough. Keep those claims maintained rather than reopening
 them as tasks.

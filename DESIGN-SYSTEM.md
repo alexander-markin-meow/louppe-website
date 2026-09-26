@@ -1,62 +1,51 @@
-# louppe media culler website design system
+# Louppe website — Quiet darkroom
 
-Dark, direct, and intentionally simple. Static HTML + CSS with no build step.
+Static HTML, CSS and JavaScript with no build step. Approved 2026-09-26.
 
-## voice
+## Voice
 
-- lowercase throughout, except proper nouns and technical names where lowercase is confusing
-- concise and practical; no exclamation marks or emoji
-- explain the product before explaining implementation details
+- Address people working with photos, video and audio, not only photographers
+- Lowercase except proper nouns, technical names and the owner's Contact label
+- Full stops separate sentences; omit them at the ends of headings, lines and paragraphs
+- Concise, practical copy; avoid extra captions, hints and repeated supporting text
+- Credit “made by an artist” and “an independent project by Alex Markin”
 
-## visual language
+## Visual language
 
-- pure black base with the animated mesh-and-grain background adapted from the background trial
-- bright purple is the sole accent color, used for headings, links, tags, and focus states
-- the mesh uses muted teal, violet, and red blobs; these atmospheric colors are not reused as interface accents
-- the real app preview alone uses a neutral grey surface; feature and action lists remain open and unboxed
-- system sans-serif for display and reading text; IBM Plex Mono for compact labels, tags, and footer details
-- large, compact display title with close but non-overlapping letterforms and simple type hierarchy beneath it
-- soft 12px corners on screenshots and video; no decorative dividers or action cards
+- Dark background #080808, primary text #f3f3f3, secondary text #b0b0b0
+- Brand purple #9853a6 for download buttons; #c691d2 for readable purple text and focus
+- System sans-serif; no external fonts
+- A large real app view is the main visual; feature sections remain open and unboxed
+- 1040px maximum media width, 920px reading sections, compact centred introduction
+- Responsive single-column layout on phones, with visible keyboard focus
 
-## background effect
+## Grain
 
-- document-length decorative stage behind the page, ignored by assistive technology and pointer input
-- the stage's own blob and grain paint overflow extends a viewport beyond both page edges so rubber-band overscroll is seamless
-- on scroll each blob travels at its own fixed ratio between 0.40× and 0.80× of content speed
-- six independent blobs run distinct 22–38s animations with different sizes, directions, scale changes, and phases
-- mesh blobs retain a 42px blur and use varied opacity rather than a duplicated second layer
-- colors: six subtle mixes derived from `#649d87`, `#534c74`, and `#a44642`, sampled from the chosen trial settings
-- grain: 512px tile, 0.16 strength, screen blended, 840ms resample motion, 0.65 frequency, 4 octaves, with strong contrast and reduced brightness for visible fine specks without a grey veil
-- disable mesh and grain motion when the visitor prefers reduced motion
+- Fine, monochrome 512px SVG texture in `media/grain.svg`
+- Screen blend at 0.12 opacity; 0.85 frequency, three octaves, gamma 2.1
+- Discrete background-position changes on the live site's 840ms cycle
+- Grain stays behind all content; screenshots, video and text stay crisp
+- Reduced-motion preferences disable the grain animation
+- No mesh blobs or additional background colours
 
-## layout
+## Content and controls
 
-- one centered reading column at every viewport width
-- 720px maximum content width with generous outer margins
-- sections follow one linear product story: introduction, real app preview, features, download, and author
-- system requirements and first-run trust copy sit beside the first download link
-- feature items stay stacked with open spacing and no dividers
-- download and code are plain text rows, never cards or buttons
-- footer is a simple flexible row and stacks only when space is tight
+- Header: Louppe wordmark and open-source link
+- Hero: inclusive product promise, download, Apple silicon/macOS requirements
+- One viewer with Gallery, Grid and Demo buttons; no autoplay
+- Gallery and Grid enlarge on activation; Demo has native controls and English captions
+- Switching away from Demo pauses playback; `#review-demo` still opens Demo directly
+- Keep a written walkthrough with Demo; omit video/caption download buttons
+- Three short workflow descriptions, a keyboard example, expandable feature details
+- Closing download and artist/contact/support section
+- No “how it works” navigation link, installation instructions or visible release-preview notices
+- Preserve canonical/search/social metadata, latest-release download URLs and opt-in analytics
+- Footer privacy control reopens analytics consent; never load analytics before consent
 
-## page identity
+## Assets and delivery
 
-Louppe Media Culler is the page's only display title. The purple line beneath it
-is the product subheader. The installed app remains Louppe. Alex Markin is
-credited in the page's author section, with a quiet optional support link.
+Use the selected public derivatives in `media/2026-09-26/`. Preserve the media
+notes as capture provenance. Original shoot files stay outside the public repo.
 
-## assets
-
-Use two genuine native screenshots: Gallery with Information, then Grid. Keep
-captions useful and images linked to full-size versions. A user-controlled
-25-second walkthrough stays in a disclosure below them; no autoplay. Include
-English captions, a written walkthrough, and a direct video download.
-
-Label captures from an upcoming interface with its version; the download remains
-the current published release. Publish only the selected web derivatives. Store
-candidates and original shoot files remain outside the public repositories.
-
-## cache busting
-
-Use dated `?v=YYYYMMDD` query strings for `styles.css` and `site.js`; append `-N` for
-additional changes shipped on the same day.
+GitHub Pages publishes `main` at louppe.eu. Use dated `?v=YYYYMMDD-N` cache keys
+for changed CSS/JavaScript. Keep CNAME, crawler metadata and download URLs intact.

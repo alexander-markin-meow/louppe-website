@@ -1,148 +1,84 @@
-/* Shared document utility for louppe.eu. */
-(function () {
-  var root = document.documentElement;
-  var grainSvg = "<svg xmlns='http://www.w3.org/2000/svg' width='512' height='512'>" +
-    "<filter id='n' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.65' " +
-    "numOctaves='4' stitchTiles='stitch'/></filter>" +
-    "<rect width='512' height='512' filter='url(#n)'/></svg>";
-  root.style.setProperty("--grain-url", 'url("data:image/svg+xml,' + encodeURIComponent(grainSvg) + '")');
+const views = {
+  gallery: {
+    file: 'gallery-info', height: 1129,
+    alt: 'Louppe Gallery showing an apple-tree photograph, camera settings, a histogram, and RAW+JPEG information'
+  },
+  grid: {
+    file: 'grid-overview', height: 1068,
+    alt: 'Louppe Grid showing a real shoot of street scenes, architecture and reflections, with a photo selected in purple'
+  }
+};
+const appImage = document.getElementById('app-image');
+const imageLink = document.getElementById('image-link');
+const imageDialog = document.getElementById('image-dialog');
+const dialogImage = document.getElementById('dialog-image');
+let currentView = 'gallery';
 
-  var parallaxBlobs = Array.from(document.querySelectorAll(".mesh-blob"), function (blob) {
-    return {
-      element: blob,
-      speed: parseFloat(getComputedStyle(blob).getPropertyValue("--blob-scroll-speed")) || 0.7
-    };
+const imagePanel = document.getElementById('image-panel');
+const demoPanel = document.getElementById('review-demo');
+const demoVideo = demoPanel.querySelector('video');
+
+function selectView(name) {
+  const isDemo = name === 'demo';
+  imagePanel.hidden = isDemo;
+  demoPanel.hidden = !isDemo;
+  if (!isDemo) {
+    demoVideo.pause();
+    currentView = name;
+    const view = views[name];
+    appImage.srcset = `media/2026-09-26/${view.file}-small.webp 960w, media/2026-09-26/${view.file}.webp 1800w`;
+    appImage.src = `media/2026-09-26/${view.file}.webp`;
+    appImage.alt = view.alt;
+    appImage.height = view.height;
+    imageLink.href = `media/2026-09-26/${view.file}.webp`;
+    imageLink.setAttribute('aria-label', `Enlarge ${name === 'gallery' ? 'Gallery' : 'Grid'} screenshot`);
+  }
+  document.querySelectorAll('[data-view]').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.view === name));
   });
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  var parallaxFrame = 0;
+}
+document.querySelectorAll('[data-view]').forEach(button => {
+  button.addEventListener('click', () => selectView(button.dataset.view));
+});
+function openLinkedDemo() {
+  if (location.hash !== '#review-demo' && location.hash !== '#walkthrough') return;
+  selectView('demo');
+  demoPanel.scrollIntoView({ block: 'start' });
+}
+window.addEventListener('hashchange', openLinkedDemo);
+openLinkedDemo();
 
-  function updateParallax() {
-    parallaxFrame = 0;
-    parallaxBlobs.forEach(function (blob) {
-      var offset = window.scrollY * (1 - blob.speed);
-      blob.element.style.setProperty("--blob-parallax-y", offset + "px");
-    });
-  }
+function showImage() {
+  const view = views[currentView];
+  dialogImage.src = `media/2026-09-26/${view.file}.webp`;
+  dialogImage.alt = view.alt;
+  dialogImage.height = view.height;
+  imageDialog.showModal();
+}
+imageLink.addEventListener('click', event => {
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  showImage();
+});
 
-  function scheduleParallax() {
-    if (!parallaxFrame) parallaxFrame = window.requestAnimationFrame(updateParallax);
-  }
-
-  if (parallaxBlobs.length && !reduceMotion.matches) {
-    window.addEventListener("scroll", scheduleParallax, { passive: true });
-    updateParallax();
-  }
-
-  var videoDemo = document.querySelector(".video-demo");
-  if (videoDemo) {
-    function openLinkedDemo() {
-      if (location.hash === "#review-demo") videoDemo.open = true;
-    }
-    openLinkedDemo();
-    window.addEventListener("hashchange", openLinkedDemo);
-    videoDemo.addEventListener("toggle", function () {
-      var video = videoDemo.querySelector("video");
-      if (!videoDemo.open && video) video.pause();
-    });
-  }
-
-  var copyButton = document.querySelector("[data-copy-markdown]");
-  if (!copyButton) return;
-
-  function inlineMarkdown(el) {
-    return Array.from(el.childNodes).map(function (node) {
-      if (node.nodeType === Node.TEXT_NODE) return node.textContent;
-      if (node.nodeType !== Node.ELEMENT_NODE) return "";
-      if (node.matches(".leader, .tag")) return "";
-      if (node.tagName === "A") {
-        var label = node.textContent.trim();
-        return node.getAttribute("href") ? "[" + label + "](" + node.href + ")" : label;
-      }
-      return inlineMarkdown(node);
-    }).join("").replace(/\s+/g, " ").trim();
-  }
-
-  function push(lines, prefix, value) {
-    if (value) lines.push(prefix + value);
-  }
-
-  function pageMarkdown() {
-    var lines = [];
-    var title = document.querySelector("h1");
-    if (title) push(lines, "# ", title.textContent.trim());
-
-    document.querySelectorAll(".stack section").forEach(function (section) {
-      var heading = section.querySelector(".heading, .name");
-      if (!heading) return;
-      if (heading !== title) lines.push("", "## " + heading.textContent.trim(), "");
-
-      section.querySelectorAll(":scope > .meta, :scope > .desc, :scope > .intro-download, :scope > .download-requirements, :scope > .download-install, :scope > .media-note").forEach(function (prose) {
-        push(lines, "", inlineMarkdown(prose));
-      });
-
-      section.querySelectorAll(".app-shot").forEach(function (figure) {
-        var image = figure.querySelector("img");
-        var caption = figure.querySelector("figcaption");
-        if (image) lines.push("", "![" + image.alt + "](" + image.src + ")");
-        if (caption) push(lines, "", inlineMarkdown(caption));
-      });
-      var video = section.querySelector("video source");
-      if (video) lines.push("", "[25-second walkthrough](" + video.src + ")");
-      section.querySelectorAll(".demo-transcript li").forEach(function (step, index) {
-        lines.push((index + 1) + ". " + inlineMarkdown(step));
-      });
-      section.querySelectorAll(":scope > ul > li").forEach(function (item) {
-        var row = item.matches(".row") ? item : item.querySelector(":scope > .row");
-        if (!row) return;
-        var link = row.querySelector("a");
-        var tag = row.querySelector(".tag");
-        var desc = item.querySelector(":scope > .desc");
-        var text = link && link.getAttribute("href")
-          ? "[" + link.textContent.trim() + "](" + link.href + ")"
-          : inlineMarkdown(row);
-        if (!text) return;
-        if (tag && tag.textContent.trim()) text += " — " + tag.textContent.trim();
-        lines.push("- " + text);
-        if (desc) push(lines, "  ", inlineMarkdown(desc));
-      });
-    });
-
-    var updated = document.querySelector(".footer-date");
-    lines.push("", "---", "", "source: " + location.href);
-    if (updated) lines.push(updated.textContent.trim());
-    return lines.join("\n").replace(/\n{3,}/g, "\n\n") + "\n";
-  }
-
-  function fallbackCopy(value) {
-    var area = document.createElement("textarea");
-    area.value = value;
-    area.setAttribute("readonly", "");
-    area.className = "copy-source";
-    document.body.appendChild(area);
-    area.focus({ preventScroll: true });
-    area.select();
-    area.setSelectionRange(0, area.value.length);
-    var copied = false;
-    try { copied = document.execCommand("copy"); }
-    finally { area.remove(); }
-    return copied ? Promise.resolve() : Promise.reject();
-  }
-
-  function writeClipboard(value) {
-    if (!navigator.clipboard || !window.isSecureContext) return fallbackCopy(value);
-    return navigator.clipboard.writeText(value).catch(function () { return fallbackCopy(value); });
-  }
-
-  var defaultLabel = copyButton.textContent;
-  var resetTimer;
-  function flash(label) {
-    copyButton.textContent = label;
-    window.clearTimeout(resetTimer);
-    resetTimer = window.setTimeout(function () { copyButton.textContent = defaultLabel; }, 1800);
-  }
-
-  copyButton.addEventListener("click", function () {
-    writeClipboard(pageMarkdown()).then(function () { flash("copied as markdown"); })
-      .catch(function () { flash("copy failed"); });
+const shortcuts = {
+  f: 'mark a keeper and move to the next undecided item',
+  d: 'mark a reject and move on. the file stays in place',
+  space: 'play or pause video and audio',
+  g: 'switch between Gallery and Grid'
+};
+const keyDescription = document.getElementById('key-description');
+document.querySelectorAll('[data-key]').forEach(button => {
+  button.addEventListener('click', () => {
+    keyDescription.querySelector('p').textContent = shortcuts[button.dataset.key];
+    document.querySelectorAll('[data-key]').forEach(other => other.setAttribute('aria-pressed', String(other === button)));
   });
-})();
+});
+
+document.querySelectorAll('dialog').forEach(dialog => {
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const bounds = dialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+  });
+});

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta name="google-site-verification" content="NQwtKXHYjBrgdiXlCzCHXxTRcErFzTRZhjmtbKmuzRI" />
@@ -62,145 +62,110 @@
     }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=20260926-1" />
+  <meta name="color-scheme" content="dark">
+  <link rel="stylesheet" href="/styles.css?v=20260926-3">
+  <script src="/site.js?v=20260926-3" defer></script>
+  <script src="/analytics-consent.js?v=20260923" defer></script>
 </head>
 <body>
-  <div class="background-stage" aria-hidden="true">
-    <div class="background-fx background-mesh">
-      <span class="mesh-blob mesh-blob--1"></span>
-      <span class="mesh-blob mesh-blob--2"></span>
-      <span class="mesh-blob mesh-blob--3"></span>
-      <span class="mesh-blob mesh-blob--4"></span>
-      <span class="mesh-blob mesh-blob--5"></span>
-      <span class="mesh-blob mesh-blob--6"></span>
-    </div>
-    <div class="background-fx background-grain"></div>
-  </div>
+  <a class="skip-link" href="#main">skip to content</a>
+  <header class="site-header shell">
+    <a class="wordmark" href="#main" aria-label="Louppe home">louppe</a>
+    <nav aria-label="Main navigation">
+      <a href="https://github.com/alexander-markin-meow/louppe-media-culler" target="_blank" rel="noopener">open source</a>
+    </nav>
+  </header>
 
-  <main class="page">
-    <div class="stack">
-      <section class="intro" aria-labelledby="louppe-title">
-        <h1 class="name" id="louppe-title">louppe media culler</h1>
-        <p class="meta">free photo, video &amp; audio culling • local • keyboard-first • macOS</p>
-        <p class="desc">open a folder or memory card, review with the keyboard, sort and clean up, then export your keepers. no catalog import needed.</p>
-        <p class="intro-download"><a class="download-button" href="https://github.com/alexander-markin-meow/louppe-media-culler/releases/latest/download/Louppe.zip" target="_blank" rel="noopener">download Louppe.zip for mac</a></p>
-        <p class="download-requirements">Apple silicon · macOS 14 or later</p>
-        <p class="download-install">the current release is notarized by Apple. unzip, move Louppe to Applications, then open it normally; macOS may ask you to confirm the first launch.</p>
-      </section>
+  <main id="main">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <h1 id="hero-title">find what you<br>want to keep</h1>
+      <p class="hero-copy">a free media culler for Mac. review photos, video and audio, then export your keepers</p>
+      <a class="download-button" href="https://github.com/alexander-markin-meow/louppe-media-culler/releases/latest/download/Louppe.zip">download for Mac</a>
+      <p class="requirements">Apple silicon <span aria-hidden="true">·</span> macOS 14 or later</p>
+    </section>
 
-      <section class="walkthrough" aria-labelledby="walkthrough-title">
-        <h2 class="heading" id="walkthrough-title">see louppe in use</h2>
-        <p class="desc">one photo at a time, or the whole shoot at once. press <kbd>f</kbd> for yes and <kbd>d</kbd> for no; add stars and color labels independently. export copies your keepers by default.</p>
-        <p class="media-note">real app captures from the upcoming 1.9 interface. the current download is version 1.8.</p>
-        <figure class="app-shot">
-          <a href="/media/2026-09-26/gallery-info.webp" aria-label="view full-size Gallery screenshot">
-            <img src="/media/2026-09-26/gallery-info.webp" srcset="/media/2026-09-26/gallery-info-small.webp 960w, /media/2026-09-26/gallery-info.webp 1800w" sizes="(max-width: 767px) calc(100vw - 48px), 720px" width="1800" height="1129" alt="Louppe Gallery showing an apple-tree photograph, with RAW+JPEG pairing, camera settings and a histogram in the information panel" fetchpriority="high" decoding="async" />
-          </a>
-          <figcaption>Gallery — inspect the photo with its camera settings and histogram beside it.</figcaption>
-        </figure>
-        <figure class="app-shot">
-          <a href="/media/2026-09-26/grid-overview.webp" aria-label="view full-size Grid screenshot">
-            <img src="/media/2026-09-26/grid-overview.webp" srcset="/media/2026-09-26/grid-overview-small.webp 960w, /media/2026-09-26/grid-overview.webp 1800w" sizes="(max-width: 767px) calc(100vw - 48px), 720px" width="1800" height="1068" alt="Louppe Grid showing a shoot of architecture, street scenes, reflections and still life, with one photo selected in purple" loading="lazy" decoding="async" />
-          </a>
-          <figcaption>Grid — compare nearby frames and select the photos you want to work with.</figcaption>
-        </figure>
-        <details class="video-demo" id="review-demo">
-          <summary>watch the 25-second walkthrough</summary>
-          <video controls playsinline preload="none" poster="/media/2026-09-26/showcase-poster.jpg" width="1920" height="1080" aria-label="Louppe review walkthrough" aria-describedby="demo-description">
-            <source src="/media/2026-09-26/showcase.mp4" type="video/mp4" />
-            <track kind="captions" src="/media/2026-09-26/showcase.vtt" srclang="en" label="English" default />
-            <p><a href="/media/2026-09-26/showcase.mp4">download the walkthrough</a>.</p>
+    <section class="showcase shell" aria-label="See Louppe in use">
+      <div class="view-picker" role="group" aria-label="Choose an app view">
+        <button type="button" data-view="gallery" aria-pressed="true" aria-controls="image-panel">Gallery</button>
+        <button type="button" data-view="grid" aria-pressed="false" aria-controls="image-panel">Grid</button>
+        <button type="button" data-view="demo" aria-pressed="false" aria-controls="review-demo">Demo</button>
+      </div>
+      <figure id="image-panel">
+        <a class="app-image-link" id="image-link" href="media/2026-09-26/gallery-info.webp" aria-label="Enlarge Gallery screenshot">
+          <span class="app-image-stage"><img id="app-image" src="media/2026-09-26/gallery-info.webp" srcset="media/2026-09-26/gallery-info-small.webp 960w, media/2026-09-26/gallery-info.webp 1800w" sizes="(max-width: 1100px) calc(100vw - 48px), 1040px" width="1800" height="1129" alt="Louppe Gallery showing an apple-tree photograph, camera settings, a histogram, and RAW+JPEG information" fetchpriority="high"></span>
+        </a>
+      </figure>
+      <div class="demo-panel" id="review-demo" hidden>
+        <div class="video-stage">
+          <video controls playsinline preload="none" poster="media/2026-09-26/showcase-poster.jpg" width="1920" height="1080" aria-label="Louppe review walkthrough with English captions">
+            <source src="media/2026-09-26/showcase.mp4" type="video/mp4">
+            <track kind="captions" src="media/2026-09-26/showcase.vtt" srclang="en" label="English" default>
+            <p>your browser does not support video playback</p>
           </video>
-          <p id="demo-description" class="media-note">silent walkthrough assembled from real app captures, showing Gallery, Grid, 100% inspection, ratings, filtering and the copy preview.</p>
-          <p class="demo-download"><a href="/media/2026-09-26/showcase.mp4" download>download video</a> · <a href="/media/2026-09-26/showcase.vtt" download>download captions</a></p>
-          <details class="demo-transcript">
-            <summary>read the walkthrough</summary>
-            <ol>
-              <li>open a folder or memory card; Gallery shows one photo at a time.</li>
-              <li>press <kbd>g</kbd> to switch to Grid and compare the shoot.</li>
-              <li>press <kbd>s</kbd> to inspect a photo at 100%.</li>
-              <li>mark yes with <kbd>f</kbd> or no with <kbd>d</kbd>. stars and color labels are separate decisions.</li>
-              <li>filter to yes to see your keepers.</li>
-              <li>open Export and review the copy preview. the example has 7 items comprising 14 RAW+JPEG files; copying keeps the originals at the source.</li>
-            </ol>
-          </details>
-        </details>
-      </section>
+        </div>
+          <details class="transcript"><summary>read the walkthrough</summary><ol>
+            <li>open a folder or memory card. Gallery shows one photo at a time</li>
+            <li>press <kbd>g</kbd> to switch to Grid and compare the items</li>
+            <li>press <kbd>s</kbd> to inspect a photo at 100%</li>
+            <li>mark yes with <kbd>f</kbd> or no with <kbd>d</kbd>. stars and color labels are separate decisions</li>
+            <li>filter to yes to see your keepers</li>
+            <li>open Export and review the copy preview. the example has 7 items comprising 14 RAW+JPEG files. copying keeps the originals at the source</li>
+          </ol></details>
+      </div>
+    </section>
 
-      <section>
-        <h2 class="heading">from folder to keepers</h2>
-        <ul class="pubs">
-          <li>
-            <div class="row">RAW+JPEG grouping</div>
-            <div class="desc">optionally review matching RAW+JPEG files as one photo.</div>
-          </li>
-          <li>
-            <div class="row">keyboard-driven review</div>
-            <div class="desc">review in Gallery or Grid with the keyboard. mark decisions, add stars and color labels, filter, sort and select multiple items.</div>
-          </li>
-          <li>
-            <div class="row">look closer, listen back</div>
-            <div class="desc">true 100% zoom, video and audio playback, a histogram and clipping information. optional quality cues flag high ISO, slow shutter speeds and dark or bright areas.</div>
-          </li>
-          <li>
-            <div class="row">review duplicates and bursts</div>
-            <div class="desc">find exact duplicates, likely similar photos and capture bursts locally on your Mac. analysis never changes ratings or files.</div>
-          </li>
-          <li>
-            <div class="row">clean up with control</div>
-            <div class="desc">send rejects to the macOS Trash, or keep only the RAW or JPEG from matching pairs. undo during the open session while files remain in Trash.</div>
-          </li>
-          <li>
-            <div class="row">organize</div>
-            <div class="desc">Organize Source Folder arranges media by date, rating or camera. preview and confirm each plan; undo during the open session.</div>
-          </li>
-          <li>
-            <div class="row">export your keepers</div>
-            <div class="desc">copy by default, move on the same drive, or route copies to multiple folders. use XMP sidecars for portable decisions, stars and labels in compatible editing apps.</div>
-          </li>
-          <li>
-            <div class="row">local, open and private</div>
-            <div class="desc">your media stays local. the app has no account or telemetry and is free and open source under the MIT License.</div>
-          </li>
-        </ul>
-      </section>
+    <section class="workflow reading-width" id="how-it-works" aria-label="From folder to keepers">
+      <div><h2>start with a folder</h2><p>photos, video and audio, ready to review. no catalog import</p></div>
+      <div><h2>make your choices</h2><p>mark yes or no, add stars and color labels</p></div>
+      <div><h2>take your keepers</h2><p>export your favourites. copies by default, originals left in place</p></div>
+    </section>
 
-      <section>
-        <h2 class="heading">get louppe</h2>
-        <ul class="links">
-          <li class="row"><a href="https://github.com/alexander-markin-meow/louppe-media-culler/releases/latest/download/Louppe.zip" target="_blank" rel="noopener">download Louppe.zip for mac</a></li>
-          <li class="row"><a href="https://github.com/alexander-markin-meow/louppe-media-culler/releases" target="_blank" rel="noopener">all releases</a></li>
-          <li class="row"><a href="https://github.com/alexander-markin-meow/louppe-media-culler" target="_blank" rel="noopener">view app code</a></li>
-        </ul>
-      </section>
+    <section class="keyboard-section reading-width" aria-labelledby="keyboard-title">
+      <div class="section-intro"><h2 id="keyboard-title">a few keys<br>keep you moving</h2></div>
+      <div class="key-explorer">
+        <div class="key-buttons" role="group" aria-label="Explore review shortcuts">
+          <button type="button" data-key="f" aria-label="F: mark yes" aria-pressed="true" aria-controls="key-description"><kbd>f</kbd><span>yes</span></button>
+          <button type="button" data-key="d" aria-label="D: mark no" aria-pressed="false" aria-controls="key-description"><kbd>d</kbd><span>no</span></button>
+          <button type="button" data-key="space" aria-label="Space: play or pause" aria-pressed="false" aria-controls="key-description"><kbd class="space-key">space</kbd><span>play / pause</span></button>
+          <button type="button" data-key="g" aria-label="G: switch view" aria-pressed="false" aria-controls="key-description"><kbd>g</kbd><span>view</span></button>
+        </div>
+        <div class="key-description" id="key-description" aria-live="polite"><p>mark a keeper and move to the next undecided item</p></div>
+      </div>
+    </section>
 
-      <section class="author" aria-labelledby="author-title">
-        <h2 class="heading" id="author-title">behind louppe</h2>
-        <p class="desc">Louppe is created and maintained by <a href="https://alex-markin.com/" target="_blank" rel="author noopener">alex markin</a>, a photographer.</p>
-        <p class="author-support"><a class="support-button" href="https://revolut.me/murlexander" target="_blank" rel="noopener noreferrer">support the author</a></p>
-        <p class="support-note">optional. louppe stays free for everyone.</p>
-        <p class="author-contact"><a href="mailto:a@alex-markin.com">contact Alex</a></p>
-      </section>
-    </div>
+    <section class="features-section reading-width" aria-labelledby="features-title">
+      <div class="section-intro"><h2 id="features-title">the details,<br>when you need them</h2></div>
+      <div class="feature-disclosures">
+        <details><summary>photos, video and audio</summary><div><p>review photos and play video and audio in Gallery, with keyboard playback controls</p><p>common camera RAW files, JPEG, TIFF, PNG, HEIC, WebP and AVIF are supported. optionally group matching RAW+JPEG files as one review item, with separate decisions, stars and color labels</p></div></details>
+        <details><summary>look closely. compare carefully</summary><div><p>inspect at true 100% zoom, check a histogram and clipping information, or view a phone-sized preview. optional quality cues flag high ISO, slow shutter speeds and dark or bright areas</p><p>find exact duplicates, likely similar photos and capture bursts locally on your Mac. analysis never changes ratings or files automatically</p></div></details>
+        <details><summary>filter, sort and organise</summary><div><p>filter by decisions, stars, labels, dates, folders, camera details and file types. your decisions save automatically, so you can reopen the folder and continue</p><p>Organize Source Folder previews a folder structure before moving files. Rename Files previews new names and keeps recognised RAW+JPEG/XMP families together. both support undo during the open session</p></div></details>
+        <details><summary>export and clean up with control</summary><div><p>export copies by default. you can also choose Move on the same drive, route copies to multiple folders, or write XMP sidecars for compatible editing apps</p><p>marking no does not trash a file. Clean Up is a separate action that sends unwanted files to the macOS Trash. undo is available during the open session while the files remain in Trash</p></div></details>
+        <details><summary>local, free and open source</summary><div><p>your media stays on your Mac. Louppe has no account or telemetry, and is free and open source under the MIT License</p><p>the main review workflow works with the keyboard, and VoiceOver is supported</p><a href="https://github.com/alexander-markin-meow/louppe-media-culler" target="_blank" rel="noopener">explore the source code</a></div></details>
+      </div>
+    </section>
 
-    <footer class="footer">
-      <a class="footer-date" href="https://github.com/alexander-markin-meow/louppe-media-culler/releases" target="_blank" rel="noopener">release notes</a>
-      <button class="copy-markdown" type="button" data-copy-markdown aria-live="polite">copy as markdown</button>
-      <button type="button" class="footer-action" data-analytics-settings>privacy &amp; analytics</button>
-    </footer>
+    <section class="get-section reading-width" id="download" aria-labelledby="download-title">
+      <h2 id="download-title">your next project,<br>a little more sorted</h2>
+      <a class="download-button" href="https://github.com/alexander-markin-meow/louppe-media-culler/releases/latest/download/Louppe.zip">download for Mac</a>
+    </section>
+
+    <section class="author-section reading-width" aria-labelledby="author-title">
+      <div><h2 id="author-title">made by an artist</h2><p>an independent project by <a href="https://alex-markin.com/" target="_blank" rel="author noopener">Alex Markin</a>. free and open source</p><a class="quiet-link" href="mailto:a@alex-markin.com">Contact</a></div>
+      <div class="support"><a class="quiet-link" href="https://revolut.me/murlexander" target="_blank" rel="noopener noreferrer">support the author</a></div>
+    </section>
   </main>
 
+  <footer class="site-footer reading-width"><a class="footer-brand" href="#main">louppe</a><nav aria-label="Footer navigation"><a href="https://github.com/alexander-markin-meow/louppe-media-culler/releases" target="_blank" rel="noopener">release notes</a><a href="https://github.com/alexander-markin-meow/louppe-media-culler" target="_blank" rel="noopener">source code</a><button class="text-button" data-analytics-settings type="button">privacy</button></nav></footer>
+
+  <dialog id="image-dialog" aria-label="Full-size app screenshot"><form method="dialog"><button class="dialog-close" aria-label="Close full-size screenshot">close <span aria-hidden="true">×</span></button></form><img id="dialog-image" src="media/2026-09-26/gallery-info.webp" width="1800" height="1129" alt="Full-size Louppe Gallery screenshot"></dialog>
   <aside class="analytics-consent" id="analytics-consent" aria-labelledby="analytics-consent-title" hidden>
     <div class="analytics-consent-copy">
       <h2 id="analytics-consent-title">optional website analytics</h2>
-      <p>Alex Markin uses Google Analytics (Google LLC) to count visits. if allowed, Google receives pages viewed and browser/device data via cookies. you can withdraw consent anytime.</p>
+      <p>Alex Markin uses Google Analytics (Google LLC) to count visits. if allowed, Google receives pages viewed and browser/device data via cookies. you can withdraw consent anytime</p>
       <details class="analytics-details">
         <summary>more details</summary>
-        <p><code>_ga</code> and <code>_ga_*</code> cookies last 30 days; your choice is saved for 180 days. reopen this panel from the footer to withdraw; cookies are cleared.</p>
-        <p>GitHub Pages hosts this site; Google Fonts serves the font. both receive requests. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google privacy policy</a> · <a href="mailto:a@alex-markin.com">contact</a>.</p>
+        <p><code>_ga</code> and <code>_ga_*</code> cookies last 30 days; your choice is saved for 180 days. reopen this panel from the footer to withdraw; cookies are cleared</p>
+        <p>GitHub Pages hosts this site and receives page requests. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google privacy policy</a> · <a href="mailto:a@alex-markin.com">contact</a></p>
       </details>
     </div>
     <div class="analytics-consent-actions">
@@ -208,8 +173,5 @@
       <button type="button" data-analytics-choice="accepted">allow analytics</button>
     </div>
   </aside>
-
-  <script src="/analytics-consent.js?v=20260923"></script>
-  <script src="/site.js?v=20260926-2"></script>
 </body>
 </html>

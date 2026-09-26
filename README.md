@@ -11,8 +11,9 @@ Static HTML, CSS, and JavaScript with no build step. GitHub Pages publishes the
 
 - `index.html` — page content and metadata
 - `favicon.ico`, `favicon.png` — browser icons from the app’s purple grid artwork
-- `styles.css` — the visual system
-- `site.js` — background motion, walkthrough controls, and copy-as-markdown utility
+- `styles.css` — the Quiet darkroom visual system and animated grain
+- `site.js` — Gallery/Grid/Demo viewer, screenshot enlargement, and keyboard examples
+- `media/grain.svg` — fine monochrome background texture
 - `media/2026-09-26/` — two responsive screenshots, captioned walkthrough, and sharing image
 - `CNAME` — GitHub Pages custom domain
 - `robots.txt`, `sitemap.xml`, and `llms.txt` — crawler and answer-engine discovery

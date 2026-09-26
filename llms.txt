@@ -9,4 +9,4 @@ review in Gallery or Grid with decisions, stars, color labels, filters and selec
 - [source code](https://github.com/alexander-markin-meow/louppe-media-culler): application source
 - [author](https://alex-markin.com/): alex markin
 
-The website includes two genuine Gallery and Grid screenshots and a captioned 25-second walkthrough. Captures show the upcoming 1.9 interface; the current public download is 1.8.
+The website presents Gallery, Grid and a captioned 25-second Demo in one media viewer. A written walkthrough is available with the Demo. Created by artist Alex Markin.

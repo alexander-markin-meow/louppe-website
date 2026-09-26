@@ -9,8 +9,8 @@ always describe the latest released app rather than the app worktree.
 - [x] Publish a restrained visual set: Gallery, Grid, a captioned 25-second
   walkthrough, and a 1200×630 sharing image. Future App Store candidates stay local.
 - [x] Add Open Graph and large-image Twitter metadata using the sharing image.
-- [x] Keep the download and product claims aligned with public version 1.8.0.
-  Captures from the upcoming 1.9 interface are labelled as previews.
+- [x] Publish the approved Quiet darkroom design with Gallery, Grid and Demo
+  sharing one viewer. Keep download links pointed at the latest release.
 - [ ] Add a short comparison section covering local operation, no account,
   no Homebrew dependency, metadata filtering, and XMP handoff.
 
@@ -22,17 +22,15 @@ always describe the latest released app rather than the app worktree.
 
 ## Routine maintenance
 
-- [ ] With every public app release, update the visible version/date and
-  feature claims as part of the same release pass.
-- [ ] Keep screenshots, requirements, download links, and first-run
-  instructions aligned with the published build.
-- [ ] Do not advertise unreleased features as available in the download. After
-  1.9 ships, remove the preview notices from the website, README, and media notes
-  and update the release reference in `llms.txt`.
+- [ ] With every public app release, review requirements and feature claims.
+- [ ] Keep screenshots, requirements and download links aligned with the published build.
+- [ ] Review capture provenance in the media notes after each release.
+  The owner requested removal of visible version notices and installation
+  instructions from the landing page on 2026-09-26.
 
 ## Completed baseline
 
-The site already has a direct release download, first-run guidance, macOS and
+The site already has a direct release download, macOS and
 Apple-silicon requirements, privacy and MIT-license claims, real app previews,
-and an optional captioned walkthrough. Keep those claims maintained rather than reopening
+and a captioned Demo view. Keep those claims maintained rather than reopening
 them as tasks.

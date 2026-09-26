@@ -41,7 +41,7 @@ summary::-webkit-details-marker{display:none}
 
 video{display:block;width:100%;height:auto;background:var(--surface);border-radius:12px}
 [hidden]{display:none!important}
-.video-stage{aspect-ratio:1800/1129;display:flex;align-items:center;background:var(--surface);border-radius:12px;overflow:hidden}
+.video-stage{aspect-ratio:16/9;background:var(--surface);border-radius:12px;overflow:hidden}
 
 .transcript{font-size:14px;margin-top:15px;color:var(--muted)}
 .transcript>summary{text-decoration:underline;text-underline-offset:4px;display:inline-block;padding-block:7px}

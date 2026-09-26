@@ -34,6 +34,7 @@ Static HTML, CSS and JavaScript with no build step. Approved 2026-09-26.
 - Hero: inclusive product promise, download, Apple silicon/macOS requirements
 - One viewer with Gallery, Grid and Demo buttons; no autoplay
 - Gallery and Grid enlarge on activation; Demo has native controls and English captions
+- Demo uses its natural 16:9 shape, without cropping or padding to match the screenshots
 - Switching away from Demo pauses playback; `#review-demo` still opens Demo directly
 - Keep a written walkthrough with Demo; omit video/caption download buttons
 - Three short workflow descriptions, a keyboard example, expandable feature details

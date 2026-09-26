@@ -1,10 +1,4 @@
-Louppe started as a pet project, and somewhere along the way it turned into an actual app that other people are downloading. That's a lovely thing to notice, and also a reason to look at it a little differently
-
-When you're making something for yourself, it's easy to forget how much of it only makes sense because you built it. You know where the buttons are. You know what a shortcut does. You know what happens next
-
-Someone opening the app for the first time doesn't have any of that context. That's what I've spent a lot of time thinking about while making 1.9, which is out now
-
-But first, I should probably introduce Louppe properly
+Louppe started as a pet project, and now people are downloading it. For 1.9, I've focused on making it easier to find your way around from the first session
 
 ## a place to make your choices
 

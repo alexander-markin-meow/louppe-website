@@ -42,9 +42,9 @@ npm run preview:blog
 python3 -m http.server 8766 --bind 127.0.0.1 --directory _preview
 ```
 
-Open `http://127.0.0.1:8766/blog/`. Preview pages are noindex, carry a draft notice,
-and cannot load production analytics. Drafts never enter the sitemap.
-The 1.9 introduction is at `/blog/a-proper-hello/` in this local preview only.
+Open `http://127.0.0.1:8766/blog/`. Preview pages are noindex and cannot load production analytics. They have no
+visible preview notices, so the layout matches the public site. Drafts never enter the sitemap.
+The approved 1.9 introduction is published at `/blog/a-proper-hello/`.
 
 Each metadata record contains:
 
@@ -70,8 +70,8 @@ periods between sentences, none at the ends of headings or paragraphs.
 ## Publish an approved article
 
 1. Review the wording and check release claims against the published app. The
-   first draft is written as a 1.9 launch article, at the owner’s request. Keep it
-   unpublished until the release is available and the article is approved.
+   1.9 introduction was approved for immediate publication by the owner on
+   2026-09-26 with the launch wording intact.
 2. Copy the approved Markdown into `content/posts/` and its record into
    `content/posts.json`. Set `status` to `published` and add the actual publication
    `date` in `YYYY-MM-DD` form. Remove the local draft record to avoid duplicate slugs.

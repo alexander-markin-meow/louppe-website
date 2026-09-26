@@ -5,12 +5,12 @@ body::before{background-image:url('/media/grain.svg')}
 .blog-heading h1,.post-header h1{font-size:clamp(38px,5vw,56px);font-weight:550;letter-spacing:-1.8px;line-height:1.08;text-wrap:balance}
 .blog-heading>p{max-width:520px;color:var(--muted);font-size:19px;line-height:1.6;margin-top:22px}
 .post-list{list-style:none;margin:56px 0 0;padding:0}
-.post-list li{padding:28px 0;border-top:1px solid var(--line)}
+.post-list li{padding:28px 0}
 .post-list h2{font-size:30px;font-weight:500;line-height:1.2;letter-spacing:-.7px;margin:12px 0}
 .post-list h2 a{text-decoration:none}
 .post-list p{color:var(--muted);font-size:17px;line-height:1.6;max-width:590px}
 .post-meta{color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:10px 22px}
-.blog-empty{margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
+.blog-empty{margin-top:56px;padding-top:28px}
 .blog-empty h2{font-size:26px;letter-spacing:-.5px;line-height:1.3;font-weight:500;margin-bottom:14px}
 .blog-empty p{color:var(--muted);margin-bottom:20px}
 .article-back{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:30px}
@@ -21,12 +21,13 @@ body::before{background-image:url('/media/grain.svg')}
 .article-body h3{font-size:23px;font-weight:520;margin:32px 0 16px}
 .article-body ul,.article-body ol{padding-left:24px;margin:0 0 24px}
 .article-body img{display:block;height:auto;border-radius:8px;margin:28px auto}
-.article-body blockquote{margin:28px 0;padding-left:22px;border-left:2px solid var(--purple-text);color:var(--muted)}
+.article-body blockquote{margin:28px 0;padding-left:22px;color:var(--muted)}
 .article-body pre{overflow-x:auto;padding:16px;background:var(--surface);border-radius:8px;font-size:14px}
 .article-body table{display:block;overflow-x:auto;font-size:16px}
 .article-body td,.article-body th{padding:8px;text-align:left}
 .article-cta{text-align:center;margin-top:40px}
 .article-author{margin-top:34px;font-size:15px;color:var(--muted)}
 .article-author a{color:var(--ink)}
-.draft-notice{padding:10px 0;margin-bottom:24px;color:var(--purple-text);font-size:14px;border-bottom:1px solid var(--line)}
 @media(max-width:680px){.blog-main{width:calc(100% - 40px);margin-top:32px;margin-bottom:64px}.blog-heading h1,.post-header h1{font-size:39px;letter-spacing:-1.2px}.post-header .post-deck{font-size:19px}.article-body{font-size:17px;line-height:1.75;margin-top:32px}.article-body h2{font-size:26px;margin-top:38px}.post-list h2{font-size:27px}.blog-heading>p{font-size:18px}.post-meta{font-size:13px}}
+
+.site-footer{border-top:1px solid var(--line);padding-top:28px}

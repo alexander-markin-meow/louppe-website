@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "slug": "a-proper-hello",
+    "title": "Louppe becoming a real thing: introducing 1.9",
+    "description": "Louppe 1.9 brings clearer controls and a simpler start to free photo, video and audio culling on Mac",
+    "file": "louppe-1-9.md",
+    "status": "published",
+    "cta": {
+      "label": "Try Louppe",
+      "href": "https://github.com/alexander-markin-meow/louppe-media-culler/releases/latest/download/Louppe.zip"
+    },
+    "date": "2026-09-26"
+  }
+]

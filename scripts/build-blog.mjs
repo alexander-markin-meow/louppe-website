@@ -13,7 +13,6 @@ const read = path => readFile(resolve(root, path), 'utf8');
 const json = async path => JSON.parse(await read(path));
 const write = async (path, data) => { await mkdir(dirname(resolve(out, path)), {recursive:true}); await writeFile(resolve(out, path), data); };
 const template = await read('templates/blog.html');
-const formatDate = date => new Intl.DateTimeFormat('en-GB', {day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(`${date}T12:00:00Z`));
 
 async function loadPosts(manifest, directory, draft = false) {
   const records = await json(manifest);
@@ -50,14 +49,14 @@ function page({title,description,path,content,post}) {
   const values = {title:escape(title),description:escape(description),discovery:robots,structured:schema,type:post?'article':'website',current:post?'false':'page',content};
   return template.replace(/\{\{(\w+)\}\}/g, (_, key) => values[key]).replace(/^[ \t]+$/gm, '');
 }
-function meta(post) {
-  return `<div class="post-meta"><a href="https://alex-markin.com/" rel="author">Alex Markin</a>${post.draft ? '' : `<time datetime="${post.date}">${formatDate(post.date)}</time>`}</div>`;
+function byline() {
+  return `<div class="post-meta"><a href="https://alex-markin.com/" rel="author">Alex Markin</a></div>`;
 }
-const listing = posts.length ? `<ol class="post-list">${posts.map(post => `<li>${meta(post)}<h2><a href="${post.path}">${escape(post.title)}</a></h2><p>${escape(post.description)}</p></li>`).join('')}</ol>` : `<section class="blog-empty"><h2>a first note is on its way</h2><p>I'm working on an introduction to Louppe and what I'm changing for 1.9</p><a href="/">explore Louppe</a></section>`;
-const index = page({title:'blog',description:'Notes on making Louppe, new releases, and finding what you want to keep. By Alex Markin.',path:'/blog/',content:`${preview?'<p class="draft-notice">local preview · includes unpublished drafts</p>':''}<header class="blog-heading"><h1>notes on Louppe</h1><p>on making a small app, and finding what to keep</p></header>${listing}`});
+const listing = posts.length ? `<ol class="post-list">${posts.map(post => `<li><h2><a href="${post.path}">${escape(post.title)}</a></h2><p>${escape(post.description)}</p></li>`).join('')}</ol>` : `<section class="blog-empty"><h2>a first note is on its way</h2><p>I'm working on an introduction to Louppe and what I'm changing for 1.9</p><a href="/">explore Louppe</a></section>`;
+const index = page({title:'blog',description:'Notes on making Louppe, new releases, and finding what you want to keep. By Alex Markin.',path:'/blog/',content:`<header class="blog-heading"><h1>notes on Louppe</h1><p>on making a small app, and finding what to keep</p></header>${listing}`});
 const generated = {'blog/index.html':index};
 for (const post of posts) {
-  generated[`blog/${post.slug}/index.html`] = page({title:post.title,description:post.description,path:post.path,post,content:`<a class="article-back" href="/blog/">all notes</a>${post.draft?'<p class="draft-notice">unpublished draft · for review</p>':''}<article><header class="post-header"><h1>${escape(post.title)}</h1><p class="post-deck">${escape(post.description)}</p></header><div class="article-body">${post.html}</div><footer class="article-author">${meta(post)}</footer><aside class="article-cta" aria-label="Try Louppe"><a class="download-button" href="${escape(post.cta.href)}">${escape(post.cta.label)}</a></aside></article>`});
+  generated[`blog/${post.slug}/index.html`] = page({title:post.title,description:post.description,path:post.path,post,content:`<a class="article-back" href="/blog/">all notes</a><article><header class="post-header"><h1>${escape(post.title)}</h1><p class="post-deck">${escape(post.description)}</p></header><div class="article-body">${post.html}</div><footer class="article-author">${byline()}</footer><aside class="article-cta" aria-label="Try Louppe"><a class="download-button" href="${escape(post.cta.href)}">${escape(post.cta.label)}</a></aside></article>`});
 }
 
 if (preview) {

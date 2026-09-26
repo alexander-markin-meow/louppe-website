@@ -31,10 +31,13 @@ test('draft isolation, publication, validation and withdrawal', async () => {
     assert.match(publicPage,/try Louppe/);
     await assert.rejects(load('blog/feed.xml'),{code:'ENOENT'});
     assert.doesNotMatch(await load('sitemap.xml'),/unreleased/);
+    assert.doesNotMatch(await load('blog/index.html'),/rel="author"|post-meta/);
     await assert.rejects(load('blog/unreleased/index.html'),{code:'ENOENT'});
     assert.equal(run('--preview').status,0);
     assert.match(await load('_preview/blog/unreleased/index.html'),/PRIVATE_DRAFT_SENTINEL/);
     assert.match(await load('_preview/blog/unreleased/index.html'),/noindex, nofollow/);
+    assert.doesNotMatch(await load('_preview/blog/index.html'),/local preview|draft-notice/);
+    assert.doesNotMatch(await load('_preview/blog/unreleased/index.html'),/draft-notice|unpublished draft/);
     await assert.rejects(load('_preview/blog/feed.xml'),{code:'ENOENT'});
     assert.doesNotMatch(await load('_preview/sitemap.xml'),/unreleased/);
     assert.equal(await load('blog/sample/index.html'),publicPage);

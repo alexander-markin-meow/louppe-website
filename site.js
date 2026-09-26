@@ -35,7 +35,11 @@
 
   var videoDemo = document.querySelector(".video-demo");
   if (videoDemo) {
-    if (location.hash === "#review-demo") videoDemo.open = true;
+    function openLinkedDemo() {
+      if (location.hash === "#review-demo") videoDemo.open = true;
+    }
+    openLinkedDemo();
+    window.addEventListener("hashchange", openLinkedDemo);
     videoDemo.addEventListener("toggle", function () {
       var video = videoDemo.querySelector("video");
       if (!videoDemo.open && video) video.pause();

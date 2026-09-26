@@ -37,6 +37,8 @@
   }
 
   function loadAnalytics() {
+    // Keep local previews and copied deployments out of the production property.
+    if (location.hostname !== "louppe.eu" || location.protocol !== "https:") return;
     if (analyticsLoaded) return;
     analyticsLoaded = true;
     window["ga-disable-" + measurementId] = false;
@@ -93,4 +95,15 @@
     removeAnalyticsCookies();
     banner.hidden = false;
   }
+
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest("a[href]");
+    if (!link || !analyticsLoaded || window["ga-disable-" + measurementId] ||
+        location.hostname !== "louppe.eu" || location.protocol !== "https:") return;
+    var url = new URL(link.href, location.href);
+    if (url.hostname !== "github.com" ||
+        url.pathname !== "/alexander-markin-meow/louppe-media-culler/releases/latest/download/Louppe.zip") return;
+    // A download click is intent, not a confirmed installation.
+    window.gtag("event", "louppe_download", { send_to: measurementId });
+  });
 })();

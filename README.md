@@ -18,6 +18,17 @@ Static HTML, CSS, and JavaScript with no build step. GitHub Pages publishes the
 - `DESIGN-SYSTEM.md` — design source of truth
 - `BACKLOG.md` — live website work and launch-maintenance checklist
 
+## analytics
+
+`analytics-consent.js` loads GA4 `G-9P9KKLZ5BN` only on HTTPS `louppe.eu` after
+consent. Local previews and copied deployments never load the tag. Download-link
+clicks send `louppe_download`, marked as a key event in `Louppe Media Culler`.
+This measures download intent, not completed downloads or installations.
+
+Older Louppe visits were recorded in `alex-markin-personal`; use its saved
+`louppe.eu historical traffic` comparison. Do not add user counts across the two
+properties, since visitors can overlap.
+
 ## local preview
 
 ```sh

@@ -60,7 +60,7 @@ const listing = posts.length ? `<ol class="post-list">${posts.map(post => `<li><
 const index = page({title:'blog',description:'Notes on making Louppe, new releases, and finding what you want to keep. By Alex Markin.',path:'/blog/',content:`<header class="blog-heading"><h1>notes on Louppe</h1><p>on making a small app, and finding what to keep</p></header>${listing}`});
 const generated = {'blog/index.html':index};
 for (const post of posts) {
-  generated[`blog/${post.slug}/index.html`] = page({title:post.title,description:post.description,path:post.path,post,content:`<a class="article-back" href="/blog/">all notes</a><article><header class="post-header"><h1>${escape(post.title)}</h1><p class="post-deck">${escape(post.description)}</p></header><div class="article-body">${post.html}</div><footer class="article-author">${byline()}</footer>${callToAction(post)}</article>`});
+  generated[`blog/${post.slug}/index.html`] = page({title:post.title,description:post.description,path:post.path,post,content:`<a class="article-back" href="/blog/">all notes</a><article><header class="post-header"><h1>${escape(post.title)}</h1><p class="post-deck">${escape(post.description)}</p><div class="article-author">${byline()}</div></header><div class="article-body">${post.html}</div>${callToAction(post)}</article>`});
 }
 
 if (preview) {

@@ -27,13 +27,13 @@ test('draft isolation, publication, validation and withdrawal', async () => {
     assert.match(publicPage,/One &amp; two/);
     assert.match(publicPage,/application\/ld\+json/);
     assert.equal((publicPage.match(/rel="author"/g) ?? []).length,1);
-    assert.ok(publicPage.indexOf('A published paragraph') < publicPage.indexOf('class="article-author"'));
-    assert.doesNotMatch(publicPage,/RSS|application\/rss\+xml|class="post-header"[^]*?rel="author"[^]*?<\/header>/);
+    assert.ok(publicPage.indexOf('A published paragraph') > publicPage.indexOf('class="article-author"'));
+    assert.doesNotMatch(publicPage,/RSS|application\/rss\+xml/);
     assert.match(publicPage,/try Louppe/);
     assert.equal((publicPage.match(/class="download-button"/g) ?? []).length,2);
     assert.ok(publicPage.indexOf('class="article-cta"') > publicPage.indexOf('A published paragraph'));
     assert.ok(publicPage.indexOf('class="article-cta"') < publicPage.indexOf('A closing paragraph'));
-    assert.ok(publicPage.lastIndexOf('class="article-cta"') > publicPage.indexOf('class="article-author"'));
+    assert.ok(publicPage.lastIndexOf('class="article-cta"') > publicPage.indexOf('A closing paragraph'));
     for (const invalidBody of ['No CTA', '<!-- try-louppe -->Only after', 'Only before<!-- try-louppe -->']) {
       await save('content/posts/sample.md',invalidBody);
       assert.notEqual(run().status,0);

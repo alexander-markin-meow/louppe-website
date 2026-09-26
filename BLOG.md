@@ -62,12 +62,13 @@ Each metadata record contains:
 }
 ```
 
-The shared article layout has one Alex Markin byline after the text, linked to
-https://alex-markin.com/, followed by a centered call-to-action button without small print.
+The shared article layout has one Alex Markin byline below the subtitle at the top,
+linked to https://alex-markin.com/. Author links turn purple on hover and keyboard focus.
+A centered call-to-action button without small print closes the article.
 **Every article must contain at least two calls to action.** Put `<!-- try-louppe -->`
 on its own line at a natural pause around the middle of the Markdown. The generator
 renders it as a centered Try Louppe button using the post's CTA metadata and always
-adds another after the byline. Builds fail if the in-article marker is missing or
+adds another at the end of the article. Builds fail if the in-article marker is missing or
 has no article text before or after it. Additional markers are supported when useful.
 
 The body uses natural

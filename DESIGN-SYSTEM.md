@@ -59,10 +59,10 @@ for changed CSS/JavaScript. Keep CNAME, crawler metadata and download URLs intac
 - Article text uses a 680px left-aligned column, system type and the same grain
 - Natural sentence case for long-form writing; contractions and first-person voice
 - Preserve the no-trailing-period preference in headings and paragraphs
-- One quiet byline after the article, linked to Alex Markin’s website; none on the index
+- One quiet byline at the top, below the subtitle, linked to Alex Markin’s website; none on the index
 - One divider above the site footer; no other divider lines on blog pages
 - No visible local-preview or draft notices
-- Every article must have at least two centered “Try Louppe” buttons: one within the article and one below the byline; no extra CTA small print
+- Every article must have at least two centered “Try Louppe” buttons: one within the article and one at the end; no extra CTA small print
 - Keep a descriptive subtitle with natural search terms
 - No RSS feed or subscription features
 - Drafts are local previews, never public posts until explicitly approved

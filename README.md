@@ -40,5 +40,5 @@ python3 -m http.server 8787
 
 ## blog
 
-The blog lives at `/blog/`. See [BLOG.md](BLOG.md) for drafting, local previews
+The blog lives at `/blog/`. See [BLOG.md](BLOG.md) for drafting, local previews,
 and the explicit publish workflow. Drafts stay local and out of the public repo.

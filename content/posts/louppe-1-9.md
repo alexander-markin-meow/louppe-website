@@ -18,7 +18,7 @@ There's a proper Help window, searchable keyboard shortcuts, and review tips you
 
 Filters are clearer too. It should be easier to see what's active, understand why you're looking at a smaller set of files, and get back to everything. The export choices are more explicit, especially which items you've selected and what you're about to copy or move
 
-Some of the changes are small: a more compact start window, a folder you can drop straight into it, quieter save feedback. Others make reviewing feel more natural, like a zoom slider and pinch-to-zoom for photos
+Some of the changes are small: a more compact start window, a folder you can drop straight into it, and quieter save feedback. Others make reviewing feel more natural, like a zoom slider and pinch-to-zoom for photos
 
 I don't expect one update to make everything obvious. But I want fewer moments where you have to stop and work out what the app is asking you to do
 

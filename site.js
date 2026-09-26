@@ -5,7 +5,7 @@ const views = {
   },
   grid: {
     file: 'grid-overview', height: 1068,
-    alt: 'Louppe Grid showing a real shoot of street scenes, architecture and reflections, with a photo selected in purple'
+    alt: 'Louppe Grid showing a real shoot of street scenes, architecture, and reflections, with a photo selected in purple'
   }
 };
 const appImage = document.getElementById('app-image');

@@ -1,10 +1,12 @@
 # Louppe website — Quiet darkroom
 
-Static HTML, CSS and JavaScript. Blog pages are generated from Markdown. Approved 2026-09-26.
+Static HTML, CSS, and JavaScript. Blog pages are generated from Markdown. Approved 2026-09-26.
 
 ## Voice
 
-- Address people working with photos, video and audio, not only photographers
+- Always use Oxford commas in lists of three or more items, including headings and metadata
+
+- Address people working with photos, video, and audio, not only photographers
 - Lowercase except proper nouns, technical names and the owner's Contact label
 - Full stops separate sentences; omit them at the ends of headings, lines and paragraphs
 - Concise, practical copy; avoid extra captions, hints and repeated supporting text
@@ -30,9 +32,9 @@ Static HTML, CSS and JavaScript. Blog pages are generated from Markdown. Approve
 
 ## Content and controls
 
-- Header: Louppe wordmark, blog and open-source links
+- Header: Louppe wordmark, blog, and open-source links
 - Hero: inclusive product promise, download, Apple silicon/macOS requirements
-- One viewer with Gallery, Grid and Demo buttons; no autoplay
+- One viewer with Gallery, Grid, and Demo buttons; no autoplay
 - Gallery and Grid enlarge on activation; Demo has native controls and English captions
 - Demo uses its natural 16:9 shape, without cropping or padding to match the screenshots
 - Switching away from Demo pauses playback; `#review-demo` still opens Demo directly

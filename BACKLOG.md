@@ -9,7 +9,7 @@ always describe the latest released app rather than the app worktree.
 - [x] Publish a restrained visual set: Gallery, Grid, a captioned 25-second
   walkthrough, and a 1200×630 sharing image. Future App Store candidates stay local.
 - [x] Add Open Graph and large-image Twitter metadata using the sharing image.
-- [x] Publish the approved Quiet darkroom design with Gallery, Grid and Demo
+- [x] Publish the approved Quiet darkroom design with Gallery, Grid, and Demo
   sharing one viewer. Keep download links pointed at the latest release.
 - [ ] Add a short comparison section covering local operation, no account,
   no Homebrew dependency, metadata filtering, and XMP handoff.
@@ -23,7 +23,7 @@ always describe the latest released app rather than the app worktree.
 ## Routine maintenance
 
 - [ ] With every public app release, review requirements and feature claims.
-- [ ] Keep screenshots, requirements and download links aligned with the published build.
+- [ ] Keep screenshots, requirements, and download links aligned with the published build.
 - [ ] Review capture provenance in the media notes after each release.
   The owner requested removal of visible version notices and installation
   instructions from the landing page on 2026-09-26.

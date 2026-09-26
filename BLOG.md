@@ -76,7 +76,8 @@ periods between sentences, none at the ends of headings or paragraphs.
    `content/posts.json`. Set `status` to `published` and add the actual publication
    `date` in `YYYY-MM-DD` form. Remove the local draft record to avoid duplicate slugs.
 3. Run `npm run build:blog` and `npm run test:blog`. Check the resulting pages.
-   Future dates and incomplete metadata fail the build instead of silently publishing.
+   Invalid dates and incomplete metadata fail the build. The date is an editorial
+   label; publication is controlled by the explicit status, not scheduled by date.
 4. Commit only the intended source, generated `blog/` files and `sitemap.xml` on
    `main`, then push. GitHub Pages continues to serve static files via `.nojekyll`.
 5. Confirm the Pages build and live article and links.

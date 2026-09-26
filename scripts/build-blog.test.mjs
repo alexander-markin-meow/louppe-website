@@ -41,11 +41,15 @@ test('draft isolation, publication, validation and withdrawal', async () => {
     await assert.rejects(load('_preview/blog/feed.xml'),{code:'ENOENT'});
     assert.doesNotMatch(await load('_preview/sitemap.xml'),/unreleased/);
     assert.equal(await load('blog/sample/index.html'),publicPage);
-    for (const invalid of [{status:'draft'},{date:'2999-01-01'},{date:'2026-02-30'},{slug:'../escape'},{cta:null}]) {
+    for (const invalid of [{status:'draft'},{date:'2026-02-30'},{slug:'../escape'},{cta:null}]) {
       await save('content/posts.json',JSON.stringify([{...record,...invalid}]));
       assert.notEqual(run().status,0);
       assert.equal(await load('blog/sample/index.html'),publicPage);
     }
+    // Publication is explicit; an editorial date does not schedule or hide a post.
+    await save('content/posts.json',JSON.stringify([{...record,date:'2999-01-01'}]));
+    assert.equal(run().status,0);
+    assert.match(await load('blog/sample/index.html'),/"datePublished":"2999-01-01"/);
     await save('content/posts.json','[]');
     assert.equal(run().status,0);
     await assert.rejects(load('blog/sample/index.html'),{code:'ENOENT'});

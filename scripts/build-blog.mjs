@@ -7,7 +7,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const preview = process.argv.includes('--preview');
 const out = preview ? resolve(root, '_preview') : root;
 const origin = 'https://louppe.eu';
-const today = new Date().toISOString().slice(0, 10);
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const read = path => readFile(resolve(root, path), 'utf8');
 const json = async path => JSON.parse(await read(path));
@@ -21,7 +20,7 @@ async function loadPosts(manifest, directory, draft = false) {
     if (!/^[a-z0-9-]+\.md$/.test(post.file)) throw new Error(`Invalid file for ${post.slug}`);
     for (const key of ['title','description']) if (!post[key]?.trim()) throw new Error(`Missing ${key} for ${post.slug}`);
     if (post.status !== (draft ? 'draft' : 'published')) throw new Error(`Wrong publication status for ${post.slug}`);
-    if (!draft && (!/^\d{4}-\d{2}-\d{2}$/.test(post.date ?? '') || Number.isNaN(Date.parse(post.date)) || new Date(post.date).toISOString().slice(0,10) !== post.date || post.date > today)) throw new Error(`Published posts need a real, non-future date: ${post.slug}`);
+    if (!draft && (!/^\d{4}-\d{2}-\d{2}$/.test(post.date ?? '') || Number.isNaN(Date.parse(post.date)) || new Date(post.date).toISOString().slice(0,10) !== post.date)) throw new Error(`Published posts need a real calendar date: ${post.slug}`);
     if (!post.cta?.label?.trim()) throw new Error(`Missing call to action for ${post.slug}`);
     if (!/^(https:\/\/|mailto:)/.test(post.cta.href ?? '')) throw new Error(`Invalid CTA URL for ${post.slug}`);
     const body = await read(`${directory}/${post.file}`);

@@ -34,7 +34,7 @@ Static HTML, CSS, and JavaScript. Blog pages are generated from Markdown. Approv
 
 - Header: Louppe wordmark, blog, and open-source links
 - Hero: inclusive product promise, download, Apple silicon/macOS requirements
-- One viewer with Gallery, Grid, and Demo buttons; no autoplay
+- One viewer with lowercase gallery, grid, and demo buttons; no autoplay
 - Gallery and Grid enlarge on activation; Demo has native controls and English captions
 - Demo uses its natural 16:9 shape, without cropping or padding to match the screenshots
 - Switching away from Demo pauses playback; `#review-demo` still opens Demo directly

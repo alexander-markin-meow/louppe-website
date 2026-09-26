@@ -23,7 +23,7 @@ async function loadPosts(manifest, directory, draft = false) {
     for (const key of ['title','description']) if (!post[key]?.trim()) throw new Error(`Missing ${key} for ${post.slug}`);
     if (post.status !== (draft ? 'draft' : 'published')) throw new Error(`Wrong publication status for ${post.slug}`);
     if (!draft && (!/^\d{4}-\d{2}-\d{2}$/.test(post.date ?? '') || Number.isNaN(Date.parse(post.date)) || new Date(post.date).toISOString().slice(0,10) !== post.date || post.date > today)) throw new Error(`Published posts need a real, non-future date: ${post.slug}`);
-    if (!post.cta?.label?.trim() || !post.cta?.note?.trim()) throw new Error(`Missing call to action for ${post.slug}`);
+    if (!post.cta?.label?.trim()) throw new Error(`Missing call to action for ${post.slug}`);
     if (!/^(https:\/\/|mailto:)/.test(post.cta.href ?? '')) throw new Error(`Invalid CTA URL for ${post.slug}`);
     const body = await read(`${directory}/${post.file}`);
     if (!body.trim()) throw new Error(`Empty article: ${post.slug}`);
@@ -57,11 +57,8 @@ const listing = posts.length ? `<ol class="post-list">${posts.map(post => `<li>$
 const index = page({title:'blog',description:'Notes on making Louppe, new releases, and finding what you want to keep. By Alex Markin.',path:'/blog/',content:`${preview?'<p class="draft-notice">local preview · includes unpublished drafts</p>':''}<header class="blog-heading"><h1>notes on Louppe</h1><p>on making a small app, and finding what to keep</p></header>${listing}`});
 const generated = {'blog/index.html':index};
 for (const post of posts) {
-  generated[`blog/${post.slug}/index.html`] = page({title:post.title,description:post.description,path:post.path,post,content:`<a class="article-back" href="/blog/">all notes</a>${post.draft?'<p class="draft-notice">unpublished draft · for review</p>':''}<article><header class="post-header"><h1>${escape(post.title)}</h1><p class="post-deck">${escape(post.description)}</p>${meta(post)}</header><div class="article-body">${post.html}</div><aside class="article-cta" aria-label="Try Louppe"><a class="download-button" href="${escape(post.cta.href)}">${escape(post.cta.label)}</a><p>${escape(post.cta.note)}</p></aside><p class="article-author">written by <a href="https://alex-markin.com/" rel="author">Alex Markin</a>, the artist making Louppe</p></article>`});
+  generated[`blog/${post.slug}/index.html`] = page({title:post.title,description:post.description,path:post.path,post,content:`<a class="article-back" href="/blog/">all notes</a>${post.draft?'<p class="draft-notice">unpublished draft · for review</p>':''}<article><header class="post-header"><h1>${escape(post.title)}</h1><p class="post-deck">${escape(post.description)}</p></header><div class="article-body">${post.html}</div><footer class="article-author">${meta(post)}</footer><aside class="article-cta" aria-label="Try Louppe"><a class="download-button" href="${escape(post.cta.href)}">${escape(post.cta.label)}</a></aside></article>`});
 }
-// Feeds and discovery always include published posts only, even during preview.
-generated['blog/feed.xml'] = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Louppe — notes by Alex Markin</title><link>${origin}/blog/</link><description>Notes on making Louppe and new releases</description><language>en</language><atom:link href="${origin}/blog/feed.xml" rel="self" type="application/rss+xml"/>${published.map(p=>`<item><title>${escape(p.title)}</title><link>${origin}${p.path}</link><guid isPermaLink="true">${origin}${p.path}</guid><pubDate>${new Date(p.date+'T12:00:00Z').toUTCString()}</pubDate><description>${escape(p.description)}</description></item>`).join('')}</channel></rss>\n`;
 
 if (preview) {
   // Dedicated ignored output; nothing from drafts is written into deployable paths.

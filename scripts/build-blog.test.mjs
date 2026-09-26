@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 const source = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
-test('draft isolation, publication, feed, validation and withdrawal', async () => {
+test('draft isolation, publication, validation and withdrawal', async () => {
   const root = await mkdtemp(resolve(tmpdir(),'louppe-blog-'));
   try {
     for (const name of ['scripts','templates','content/posts','.drafts','media']) await mkdir(resolve(root,name),{recursive:true});
@@ -16,7 +16,7 @@ test('draft isolation, publication, feed, validation and withdrawal', async () =
     const save = (name,body) => writeFile(resolve(root,name),body);
     const load = name => readFile(resolve(root,name),'utf8');
     const run = (...args) => spawnSync(process.execPath,['scripts/build-blog.mjs',...args],{cwd:root,encoding:'utf8'});
-    const record = {slug:'sample',title:'One & two',description:'A "quoted" description',file:'sample.md',status:'published',date:'2026-01-01',cta:{label:'try Louppe',href:'https://louppe.eu/',note:'for Mac'}};
+    const record = {slug:'sample',title:'One & two',description:'A "quoted" description',file:'sample.md',status:'published',date:'2026-01-01',cta:{label:'try Louppe',href:'https://louppe.eu/'}};
     await save('content/posts.json',JSON.stringify([record]));
     await save('content/posts/sample.md','A published paragraph');
     await save('.drafts/posts.json',JSON.stringify([{...record,slug:'unreleased',status:'draft',file:'draft.md'}]));
@@ -25,15 +25,17 @@ test('draft isolation, publication, feed, validation and withdrawal', async () =
     const publicPage = await load('blog/sample/index.html');
     assert.match(publicPage,/One &amp; two/);
     assert.match(publicPage,/application\/ld\+json/);
-    assert.match(publicPage,/written by/);
+    assert.equal((publicPage.match(/rel="author"/g) ?? []).length,1);
+    assert.ok(publicPage.indexOf('A published paragraph') < publicPage.indexOf('class="article-author"'));
+    assert.doesNotMatch(publicPage,/RSS|application\/rss\+xml|class="post-header"[^]*?rel="author"[^]*?<\/header>/);
     assert.match(publicPage,/try Louppe/);
-    assert.match(await load('blog/feed.xml'),/https:\/\/louppe.eu\/blog\/sample\//);
+    await assert.rejects(load('blog/feed.xml'),{code:'ENOENT'});
     assert.doesNotMatch(await load('sitemap.xml'),/unreleased/);
     await assert.rejects(load('blog/unreleased/index.html'),{code:'ENOENT'});
     assert.equal(run('--preview').status,0);
     assert.match(await load('_preview/blog/unreleased/index.html'),/PRIVATE_DRAFT_SENTINEL/);
     assert.match(await load('_preview/blog/unreleased/index.html'),/noindex, nofollow/);
-    assert.doesNotMatch(await load('_preview/blog/feed.xml'),/unreleased/);
+    await assert.rejects(load('_preview/blog/feed.xml'),{code:'ENOENT'});
     assert.doesNotMatch(await load('_preview/sitemap.xml'),/unreleased/);
     assert.equal(await load('blog/sample/index.html'),publicPage);
     for (const invalid of [{status:'draft'},{date:'2999-01-01'},{date:'2026-02-30'},{slug:'../escape'},{cta:null}]) {
@@ -44,6 +46,6 @@ test('draft isolation, publication, feed, validation and withdrawal', async () =
     await save('content/posts.json','[]');
     assert.equal(run().status,0);
     await assert.rejects(load('blog/sample/index.html'),{code:'ENOENT'});
-    assert.doesNotMatch(await load('blog/feed.xml'),/<item>/);
+    await assert.rejects(load('blog/feed.xml'),{code:'ENOENT'});
   } finally { await rm(root,{recursive:true,force:true}); }
 });

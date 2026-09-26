@@ -15,7 +15,7 @@ in the visitor's browser. GitHub Pages is designed for
 
 A CMS is unnecessary for one author and occasional posts. Revisit that decision
 if multiple people need a browser editor, scheduled publishing or editorial roles.
-Comments, subscriptions and newsletters are deliberately out of scope for now.
+RSS, comments, subscriptions and newsletters are deliberately out of scope for now.
 
 ## Files
 
@@ -23,7 +23,7 @@ Comments, subscriptions and newsletters are deliberately out of scope for now.
 - `content/posts/<file>.md`: published article text, edited as ordinary Markdown
 - `templates/blog.html`: shared page shell and privacy controls
 - `blog.css`: reading layout, alongside the landing page's shared styles
-- `scripts/build-blog.mjs`: generator for article pages, index, RSS and sitemap
+- `scripts/build-blog.mjs`: generator for article pages, index and sitemap
 - `blog/`: generated, committed public pages; do not edit them directly
 - `.drafts/`: local, gitignored article drafts and a separate `posts.json`
 - `_preview/`: local, gitignored copy of the site with drafts included
@@ -43,7 +43,7 @@ python3 -m http.server 8766 --bind 127.0.0.1 --directory _preview
 ```
 
 Open `http://127.0.0.1:8766/blog/`. Preview pages are noindex, carry a draft notice,
-and cannot load production analytics. Drafts never enter the RSS feed or sitemap.
+and cannot load production analytics. Drafts never enter the sitemap.
 The 1.9 introduction is at `/blog/a-proper-hello/` in this local preview only.
 
 Each metadata record contains:
@@ -56,22 +56,22 @@ Each metadata record contains:
   "file": "article.md",
   "status": "draft",
   "cta": {
-    "label": "try Louppe for Mac",
-    "href": "https://github.com/alexander-markin-meow/louppe-media-culler/releases/latest/download/Louppe.zip",
-    "note": "the current release for Apple silicon Macs running macOS 14 or later"
+    "label": "Try Louppe",
+    "href": "https://github.com/alexander-markin-meow/louppe-media-culler/releases/latest/download/Louppe.zip"
   }
 }
 ```
 
-The shared article layout always includes Alex Markin's byline, a link to
-https://alex-markin.com/, and a required call to action. The body uses natural
+The shared article layout has one Alex Markin byline after the text, linked to
+https://alex-markin.com/, followed by a centered call-to-action button without small print. The body uses natural
 sentence case and contractions, while retaining the site's punctuation preference:
 periods between sentences, none at the ends of headings or paragraphs.
 
 ## Publish an approved article
 
 1. Review the wording and check release claims against the published app. The
-   first draft describes 1.9 as upcoming; change that only when it actually ships.
+   first draft is written as a 1.9 launch article, at the owner’s request. Keep it
+   unpublished until the release is available and the article is approved.
 2. Copy the approved Markdown into `content/posts/` and its record into
    `content/posts.json`. Set `status` to `published` and add the actual publication
    `date` in `YYYY-MM-DD` form. Remove the local draft record to avoid duplicate slugs.
@@ -79,7 +79,7 @@ periods between sentences, none at the ends of headings or paragraphs.
    Future dates and incomplete metadata fail the build instead of silently publishing.
 4. Commit only the intended source, generated `blog/` files and `sitemap.xml` on
    `main`, then push. GitHub Pages continues to serve static files via `.nojekyll`.
-5. Confirm the Pages build and live article, RSS and links.
+5. Confirm the Pages build and live article and links.
 
 The build step runs locally before committing; GitHub does not install Node or
 rebuild the blog. Publishing remains explicit. Generated-file tracking removes

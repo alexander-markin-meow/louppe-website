@@ -57,5 +57,8 @@ for changed CSS/JavaScript. Keep CNAME, crawler metadata and download URLs intac
 - Article text uses a 680px left-aligned column, system type and the same grain
 - Natural sentence case for long-form writing; contractions and first-person voice
 - Preserve the no-trailing-period preference in headings and paragraphs
-- Every article includes Alex Markin’s byline, personal-site link and a clear CTA
+- One byline after the article, linked to Alex Markin’s website
+- Center the “Try Louppe” button below the byline; no extra CTA small print
+- Keep a descriptive subtitle with natural search terms
+- No RSS feed or subscription features
 - Drafts are local previews, never public posts until explicitly approved

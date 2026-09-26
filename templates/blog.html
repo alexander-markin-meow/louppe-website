@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}} — Louppe</title>
+  <meta name="description" content="{{description}}">
+  <meta name="author" content="Alex Markin">
+  <meta name="color-scheme" content="dark">
+  {{discovery}}
+  <link rel="icon" href="/favicon.ico?v=20260909">
+  <link rel="stylesheet" href="/styles.css?v=20260926-5">
+  <link rel="stylesheet" href="/blog.css?v=20260926-1">
+  <link rel="alternate" type="application/rss+xml" title="Louppe blog" href="/blog/feed.xml">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:type" content="{{type}}">
+  <meta property="og:image" content="https://louppe.eu/media/2026-09-26/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  {{structured}}
+  <script src="/analytics-consent.js?v=20260923" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">skip to content</a>
+  <header class="site-header shell">
+    <a class="wordmark" href="/" aria-label="Louppe home">louppe</a>
+    <nav aria-label="Main navigation"><a href="/blog/" aria-current="{{current}}">blog</a><a href="https://github.com/alexander-markin-meow/louppe-media-culler" target="_blank" rel="noopener">open source</a></nav>
+  </header>
+  <main id="main" class="blog-main">{{content}}</main>
+  <footer class="site-footer reading-width"><a class="footer-brand" href="/">louppe</a><nav aria-label="Footer navigation"><a href="/blog/">blog</a><a href="/blog/feed.xml">RSS</a><a href="https://alex-markin.com/" rel="author">Alex Markin</a><button class="text-button" data-analytics-settings type="button">privacy</button></nav></footer>
+  <aside class="analytics-consent" id="analytics-consent" aria-labelledby="analytics-consent-title" hidden>
+    <div class="analytics-consent-copy">
+      <h2 id="analytics-consent-title">optional website analytics</h2>
+      <p>Alex Markin uses Google Analytics (Google LLC) to count visits. if allowed, Google receives pages viewed and browser/device data via cookies. you can withdraw consent anytime</p>
+      <details class="analytics-details">
+        <summary>more details</summary>
+        <p><code>_ga</code> and <code>_ga_*</code> cookies last 30 days; your choice is saved for 180 days. reopen this panel from the footer to withdraw; cookies are cleared</p>
+        <p>GitHub Pages hosts this site and receives page requests. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google privacy policy</a> · <a href="mailto:a@alex-markin.com">contact</a></p>
+      </details>
+    </div>
+    <div class="analytics-consent-actions">
+      <button type="button" data-analytics-choice="rejected">no analytics</button>
+      <button type="button" data-analytics-choice="accepted">allow analytics</button>
+    </div>
+  </aside>
+</body>
+</html>

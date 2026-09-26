@@ -1,1 +1,4 @@
 .DS_Store
+node_modules/
+.drafts/
+_preview/

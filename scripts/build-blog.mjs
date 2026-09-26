@@ -1,0 +1,81 @@
+import { readFile, writeFile, mkdir, cp, rm } from 'node:fs/promises';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { marked } from 'marked';
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const preview = process.argv.includes('--preview');
+const out = preview ? resolve(root, '_preview') : root;
+const origin = 'https://louppe.eu';
+const today = new Date().toISOString().slice(0, 10);
+const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const read = path => readFile(resolve(root, path), 'utf8');
+const json = async path => JSON.parse(await read(path));
+const write = async (path, data) => { await mkdir(dirname(resolve(out, path)), {recursive:true}); await writeFile(resolve(out, path), data); };
+const template = await read('templates/blog.html');
+const formatDate = date => new Intl.DateTimeFormat('en-GB', {day:'numeric',month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(`${date}T12:00:00Z`));
+
+async function loadPosts(manifest, directory, draft = false) {
+  const records = await json(manifest);
+  return Promise.all(records.map(async post => {
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.slug) || ['feed','index'].includes(post.slug)) throw new Error('Invalid post slug');
+    if (!/^[a-z0-9-]+\.md$/.test(post.file)) throw new Error(`Invalid file for ${post.slug}`);
+    for (const key of ['title','description']) if (!post[key]?.trim()) throw new Error(`Missing ${key} for ${post.slug}`);
+    if (post.status !== (draft ? 'draft' : 'published')) throw new Error(`Wrong publication status for ${post.slug}`);
+    if (!draft && (!/^\d{4}-\d{2}-\d{2}$/.test(post.date ?? '') || Number.isNaN(Date.parse(post.date)) || new Date(post.date).toISOString().slice(0,10) !== post.date || post.date > today)) throw new Error(`Published posts need a real, non-future date: ${post.slug}`);
+    if (!post.cta?.label?.trim() || !post.cta?.note?.trim()) throw new Error(`Missing call to action for ${post.slug}`);
+    if (!/^(https:\/\/|mailto:)/.test(post.cta.href ?? '')) throw new Error(`Invalid CTA URL for ${post.slug}`);
+    const body = await read(`${directory}/${post.file}`);
+    if (!body.trim()) throw new Error(`Empty article: ${post.slug}`);
+    return {...post, draft, body, html:marked.parse(body), path:`/blog/${post.slug}/`};
+  }));
+}
+
+const published = (await loadPosts('content/posts.json','content/posts')).sort((a,b)=>b.date.localeCompare(a.date));
+let drafts = [];
+if (preview) {
+  try { drafts = await loadPosts('.drafts/posts.json','.drafts',true); }
+  catch (error) { if (error.code !== 'ENOENT') throw error; }
+}
+const posts = [...drafts,...published];
+if (new Set(posts.map(p=>p.slug)).size !== posts.length) throw new Error('Duplicate post slugs');
+
+function page({title,description,path,content,post}) {
+  const robots = preview ? '<meta name="robots" content="noindex, nofollow">' : `<link rel="canonical" href="${origin}${path}"><meta property="og:url" content="${origin}${path}">`;
+  const schema = !post || post.draft ? '' : `<script type="application/ld+json">${JSON.stringify({
+    '@context':'https://schema.org','@type':'BlogPosting',headline:title,description,url:origin+path,
+    datePublished:post.date,author:{'@type':'Person',name:'Alex Markin',url:'https://alex-markin.com/'},
+    image:origin+'/media/2026-09-26/social-preview.jpg',mainEntityOfPage:origin+path
+  }).replaceAll('<','\\u003c')}</script>`;
+  const values = {title:escape(title),description:escape(description),discovery:robots,structured:schema,type:post?'article':'website',current:post?'false':'page',content};
+  return template.replace(/\{\{(\w+)\}\}/g, (_, key) => values[key]).replace(/^[ \t]+$/gm, '');
+}
+function meta(post) {
+  return `<div class="post-meta"><a href="https://alex-markin.com/" rel="author">Alex Markin</a>${post.draft ? '' : `<time datetime="${post.date}">${formatDate(post.date)}</time>`}</div>`;
+}
+const listing = posts.length ? `<ol class="post-list">${posts.map(post => `<li>${meta(post)}<h2><a href="${post.path}">${escape(post.title)}</a></h2><p>${escape(post.description)}</p></li>`).join('')}</ol>` : `<section class="blog-empty"><h2>a first note is on its way</h2><p>I'm working on an introduction to Louppe and what I'm changing for 1.9</p><a href="/">explore Louppe</a></section>`;
+const index = page({title:'blog',description:'Notes on making Louppe, new releases, and finding what you want to keep. By Alex Markin.',path:'/blog/',content:`${preview?'<p class="draft-notice">local preview · includes unpublished drafts</p>':''}<header class="blog-heading"><h1>notes on Louppe</h1><p>on making a small app, and finding what to keep</p></header>${listing}`});
+const generated = {'blog/index.html':index};
+for (const post of posts) {
+  generated[`blog/${post.slug}/index.html`] = page({title:post.title,description:post.description,path:post.path,post,content:`<a class="article-back" href="/blog/">all notes</a>${post.draft?'<p class="draft-notice">unpublished draft · for review</p>':''}<article><header class="post-header"><h1>${escape(post.title)}</h1><p class="post-deck">${escape(post.description)}</p>${meta(post)}</header><div class="article-body">${post.html}</div><aside class="article-cta" aria-label="Try Louppe"><a class="download-button" href="${escape(post.cta.href)}">${escape(post.cta.label)}</a><p>${escape(post.cta.note)}</p></aside><p class="article-author">written by <a href="https://alex-markin.com/" rel="author">Alex Markin</a>, the artist making Louppe</p></article>`});
+}
+// Feeds and discovery always include published posts only, even during preview.
+generated['blog/feed.xml'] = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Louppe — notes by Alex Markin</title><link>${origin}/blog/</link><description>Notes on making Louppe and new releases</description><language>en</language><atom:link href="${origin}/blog/feed.xml" rel="self" type="application/rss+xml"/>${published.map(p=>`<item><title>${escape(p.title)}</title><link>${origin}${p.path}</link><guid isPermaLink="true">${origin}${p.path}</guid><pubDate>${new Date(p.date+'T12:00:00Z').toUTCString()}</pubDate><description>${escape(p.description)}</description></item>`).join('')}</channel></rss>\n`;
+
+if (preview) {
+  // Dedicated ignored output; nothing from drafts is written into deployable paths.
+  await mkdir(out,{recursive:true});
+  for (const name of ['index.html','styles.css','site.js','analytics-consent.js','blog.css','favicon.ico','favicon.png','media']) await cp(resolve(root,name),resolve(out,name),{recursive:true});
+}
+let previous = [];
+try { previous = JSON.parse(await readFile(resolve(out,'blog/generated-files.json'),'utf8')); } catch(error) { if(error.code !== 'ENOENT') throw error; }
+for (const path of previous) {
+  if (!/^blog\/(?:[a-z0-9-]+\/)?(?:index\.html|feed\.xml)$/.test(path)) throw new Error('Invalid generated-file manifest');
+  if (!(path in generated)) await rm(resolve(out,path),{force:true});
+}
+for (const [path,content] of Object.entries(generated)) await write(path,content);
+await write('blog/generated-files.json',JSON.stringify(Object.keys(generated),null,2)+'\n');
+await write('sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${['/','/blog/',...published.map(p=>p.path)].map(path=>`\n  <url><loc>${origin}${path}</loc></url>`).join('')}\n</urlset>\n`);
+if(preview) await write('robots.txt','User-agent: *\nDisallow: /\n');
+console.log(`${preview?'Private preview':'Public blog'}: ${published.length} published, ${drafts.length} drafts → ${out}`);

@@ -1,6 +1,6 @@
 # Louppe website — Quiet darkroom
 
-Static HTML, CSS and JavaScript with no build step. Approved 2026-09-26.
+Static HTML, CSS and JavaScript. Blog pages are generated from Markdown. Approved 2026-09-26.
 
 ## Voice
 
@@ -30,7 +30,7 @@ Static HTML, CSS and JavaScript with no build step. Approved 2026-09-26.
 
 ## Content and controls
 
-- Header: Louppe wordmark and open-source link
+- Header: Louppe wordmark, blog and open-source links
 - Hero: inclusive product promise, download, Apple silicon/macOS requirements
 - One viewer with Gallery, Grid and Demo buttons; no autoplay
 - Gallery and Grid enlarge on activation; Demo has native controls and English captions
@@ -50,3 +50,12 @@ notes as capture provenance. Original shoot files stay outside the public repo.
 
 GitHub Pages publishes `main` at louppe.eu. Use dated `?v=YYYYMMDD-N` cache keys
 for changed CSS/JavaScript. Keep CNAME, crawler metadata and download URLs intact.
+
+## Blog
+
+- `/blog/` contains a simple list of notes; no card grid or category clutter
+- Article text uses a 680px left-aligned column, system type and the same grain
+- Natural sentence case for long-form writing; contractions and first-person voice
+- Preserve the no-trailing-period preference in headings and paragraphs
+- Every article includes Alex Markin’s byline, personal-site link and a clear CTA
+- Drafts are local previews, never public posts until explicitly approved

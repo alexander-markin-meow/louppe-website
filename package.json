@@ -1,0 +1,16 @@
+{
+  "name": "louppe-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:blog": "node scripts/build-blog.mjs",
+    "preview:blog": "node scripts/build-blog.mjs --preview",
+    "test:blog": "node --test scripts/build-blog.test.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "marked": "18.0.14"
+  }
+}

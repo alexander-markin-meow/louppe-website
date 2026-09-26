@@ -4,7 +4,8 @@ Standalone landing page for [Louppe Media Culler](https://louppe.eu/), a free,
 open-source, keyboard-first photo, video, and audio culler for macOS. The app
 itself is named Louppe.
 
-Static HTML, CSS, and JavaScript with no build step. GitHub Pages publishes the
+Static HTML, CSS, and JavaScript. The landing page has no build step; blog pages
+are generated locally from Markdown before publication. GitHub Pages publishes the
 `main` branch, and `CNAME` assigns the custom domain.
 
 ## files
@@ -36,3 +37,8 @@ properties, since visitors can overlap.
 ```sh
 python3 -m http.server 8787
 ```
+
+## blog
+
+The blog lives at `/blog/`. See [BLOG.md](BLOG.md) for drafting, local previews
+and the explicit publish workflow. Drafts stay local and out of the public repo.

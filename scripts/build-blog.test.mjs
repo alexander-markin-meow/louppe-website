@@ -1,0 +1,49 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtemp, mkdir, cp, writeFile, readFile, symlink, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
+const source = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+
+test('draft isolation, publication, feed, validation and withdrawal', async () => {
+  const root = await mkdtemp(resolve(tmpdir(),'louppe-blog-'));
+  try {
+    for (const name of ['scripts','templates','content/posts','.drafts','media']) await mkdir(resolve(root,name),{recursive:true});
+    for (const name of ['scripts/build-blog.mjs','templates/blog.html','index.html','styles.css','site.js','analytics-consent.js','blog.css','favicon.ico','favicon.png']) await cp(resolve(source,name),resolve(root,name));
+    await symlink(resolve(source,'node_modules'),resolve(root,'node_modules'),'dir');
+    const save = (name,body) => writeFile(resolve(root,name),body);
+    const load = name => readFile(resolve(root,name),'utf8');
+    const run = (...args) => spawnSync(process.execPath,['scripts/build-blog.mjs',...args],{cwd:root,encoding:'utf8'});
+    const record = {slug:'sample',title:'One & two',description:'A "quoted" description',file:'sample.md',status:'published',date:'2026-01-01',cta:{label:'try Louppe',href:'https://louppe.eu/',note:'for Mac'}};
+    await save('content/posts.json',JSON.stringify([record]));
+    await save('content/posts/sample.md','A published paragraph');
+    await save('.drafts/posts.json',JSON.stringify([{...record,slug:'unreleased',status:'draft',file:'draft.md'}]));
+    await save('.drafts/draft.md','PRIVATE_DRAFT_SENTINEL');
+    assert.equal(run().status,0);
+    const publicPage = await load('blog/sample/index.html');
+    assert.match(publicPage,/One &amp; two/);
+    assert.match(publicPage,/application\/ld\+json/);
+    assert.match(publicPage,/written by/);
+    assert.match(publicPage,/try Louppe/);
+    assert.match(await load('blog/feed.xml'),/https:\/\/louppe.eu\/blog\/sample\//);
+    assert.doesNotMatch(await load('sitemap.xml'),/unreleased/);
+    await assert.rejects(load('blog/unreleased/index.html'),{code:'ENOENT'});
+    assert.equal(run('--preview').status,0);
+    assert.match(await load('_preview/blog/unreleased/index.html'),/PRIVATE_DRAFT_SENTINEL/);
+    assert.match(await load('_preview/blog/unreleased/index.html'),/noindex, nofollow/);
+    assert.doesNotMatch(await load('_preview/blog/feed.xml'),/unreleased/);
+    assert.doesNotMatch(await load('_preview/sitemap.xml'),/unreleased/);
+    assert.equal(await load('blog/sample/index.html'),publicPage);
+    for (const invalid of [{status:'draft'},{date:'2999-01-01'},{date:'2026-02-30'},{slug:'../escape'},{cta:null}]) {
+      await save('content/posts.json',JSON.stringify([{...record,...invalid}]));
+      assert.notEqual(run().status,0);
+      assert.equal(await load('blog/sample/index.html'),publicPage);
+    }
+    await save('content/posts.json','[]');
+    assert.equal(run().status,0);
+    await assert.rejects(load('blog/sample/index.html'),{code:'ENOENT'});
+    assert.doesNotMatch(await load('blog/feed.xml'),/<item>/);
+  } finally { await rm(root,{recursive:true,force:true}); }
+});

@@ -10,3 +10,5 @@ review in Gallery or Grid with decisions, stars, color labels, filters and selec
 - [author](https://alex-markin.com/): alex markin
 
 The website presents Gallery, Grid and a captioned 25-second Demo in one media viewer. A written walkthrough is available with the Demo. Created by artist Alex Markin.
+
+- [blog](https://louppe.eu/blog/): notes on making Louppe and new releases, by Alex Markin

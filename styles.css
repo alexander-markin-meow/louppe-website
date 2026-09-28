@@ -72,7 +72,7 @@ video{display:block;width:100%;height:auto;background:var(--surface);border-radi
 .feature-disclosures details>div{padding:0 20px 22px 0;font-size:14px;color:var(--muted);line-height:1.65}
 .feature-disclosures p+p{margin-top:12px}
 .feature-disclosures details>div>a{display:inline-block;margin-top:12px}
-.get-section{text-align:center;margin-top:90px;padding:52px 0 48px}
+.get-section{text-align:center;margin-top:90px;padding:52px 0 48px;border-bottom:1px solid #252525}
 .get-section h2{font-size:44px;line-height:1.1;font-weight:540;letter-spacing:-1.7px;text-wrap:balance}
 .get-section .download-button{margin-top:25px}
 

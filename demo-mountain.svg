@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title">
+  <title id="title">Illustrated mountain above a lake</title>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#536582"/>
+      <stop offset="1" stop-color="#b8b3a4"/>
+    </linearGradient>
+    <linearGradient id="lake" x2="0" y2="1">
+      <stop stop-color="#738f98"/>
+      <stop offset="1" stop-color="#293e50"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h960v540H0z"/>
+  <path fill="#64707b" d="m0 354 192-173 113 107 169-192 223 242 130-132 133 129v205H0z"/>
+  <path fill="#d7d7ce" d="m474 96 84 91-65-30-42 31-34-27zM192 181l56 54-45-12-26 19-22-27z"/>
+  <path fill="#424f5f" d="M0 350 192 221l130 116 145-81 254 83 106-96 133 92v205H0z"/>
+  <path fill="url(#lake)" d="M0 360q226 7 463-10t497 2v188H0z"/>
+  <path fill="#a8bec0" opacity=".57" d="M112 386q248 17 570-5-191 31-462 24zM294 451q243-16 518-2-244 19-465 18z"/>
+</svg>

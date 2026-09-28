@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title">
+  <title id="title">Illustrated woodland path</title>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#586d70"/>
+      <stop offset="1" stop-color="#b0ab87"/>
+    </linearGradient>
+    <linearGradient id="path" x2="0" y2="1">
+      <stop stop-color="#b1a88b"/>
+      <stop offset="1" stop-color="#6a625c"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h960v540H0z"/>
+  <path fill="#657b6e" d="M0 254q216-55 458-13t502-26v325H0z"/>
+  <path fill="#38544d" d="M0 325q174-60 332-22t324-24 304-14v275H0z"/>
+  <path fill="url(#path)" d="m444 302 86 2 236 236H180z"/>
+  <g fill="#223d39">
+    <path d="m86 358 84-266 83 266zM121 231l49-178 49 178zM699 365 806 69l105 296zM755 229l51-179 53 179z"/>
+    <path d="m0 430 64-210 68 210zM843 435l74-241 43 172v69z"/>
+  </g>
+  <path fill="#d3c59c" opacity=".48" d="m435 343 29 4-78 193h-38z"/>
+</svg>

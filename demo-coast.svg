@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title">
+  <title id="title">Illustrated coast at sunrise</title>
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1">
+      <stop stop-color="#5d5f83"/>
+      <stop offset="1" stop-color="#d8a799"/>
+    </linearGradient>
+    <linearGradient id="water" x2="0" y2="1">
+      <stop stop-color="#638a91"/>
+      <stop offset="1" stop-color="#223f54"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#sky)" d="M0 0h960v540H0z"/>
+  <circle cx="676" cy="195" r="58" fill="#f3d3ad" opacity=".86"/>
+  <path fill="#444e68" d="M0 290q132-76 257-31t258-13q130-78 245-30t200 2v322H0z"/>
+  <path fill="url(#water)" d="M0 328q223-47 442-13t518-25v250H0z"/>
+  <path fill="#293b48" d="M0 285q114 17 155 109t180 146H0z"/>
+  <path fill="#dbc2a5" opacity=".57" d="M445 341q143 15 329-7-101 39-306 30z"/>
+  <path fill="#8eaeaa" opacity=".55" d="M310 419q244-19 467-2-189 24-422 19z"/>
+</svg>

@@ -102,7 +102,7 @@
         location.hostname !== "louppe.eu" || location.protocol !== "https:") return;
     var url = new URL(link.href, location.href);
     if (url.hostname !== "github.com" ||
-        url.pathname !== "/alexander-markin-meow/louppe-media-culler/releases/latest/download/Louppe.zip") return;
+        url.pathname !== "/murlexander/louppe-media-culler/releases/latest/download/Louppe.zip") return;
     // A download click is intent, not a confirmed installation.
     window.gtag("event", "louppe_download", { send_to: measurementId });
   });

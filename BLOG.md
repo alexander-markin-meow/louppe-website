@@ -57,7 +57,7 @@ Each metadata record contains:
   "status": "draft",
   "cta": {
     "label": "Try Louppe",
-    "href": "https://github.com/alexander-markin-meow/louppe-media-culler/releases/latest/download/Louppe.zip"
+    "href": "https://github.com/murlexander/louppe-media-culler/releases/latest/download/Louppe.zip"
   }
 }
 ```

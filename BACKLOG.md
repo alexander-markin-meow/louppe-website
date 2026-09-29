@@ -20,12 +20,12 @@ always describe the latest released app rather than the app worktree.
   checks are complete.
 - [x] Add the optional Revolut donation link.
 
-## Implemented locally, awaiting publication
+## Implemented and published, awaiting browser acceptance
 
-- [ ] **WEB-AUD-01 — Publish and verify the consent-reconciliation fix.**
+- [ ] **WEB-AUD-01 — Accept the deployed consent-reconciliation fix.**
   The 29 September audit's W1 implementation and 11 script regressions are complete
-  locally; all 12 website tests pass. Include the changed consent script and dated
-  cache keys in the next requested website publication. After deployment, check two
+  and published on 29 September; all 12 website tests pass. GitHub Pages deployment
+  succeeded and the live consent script matches the committed source. Check two
   real tabs: opt-in loads the tag, withdrawal/removal/expiry disables the other tab
   before another download event, and rejection while loading stays rejected. Verify
   no analytics request before opt-in and preserve the HTTPS production-host gate.

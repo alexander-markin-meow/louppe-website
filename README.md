@@ -28,6 +28,9 @@ are generated locally from Markdown before publication. GitHub Pages publishes t
 consent. Local previews and copied deployments never load the tag. Download-link
 clicks send `louppe_download`, marked as a key event in `Louppe Media Culler`.
 This measures download intent, not completed downloads or installations.
+Withdrawal, missing consent, and expiry disable collection across open tabs.
+The script also rechecks consent on focus, visibility, and download clicks.
+Run `npm run test:consent` for the shared-tab checks, or `npm test` for all website regressions.
 
 Older Louppe visits were recorded in `alex-markin-personal`; use its saved
 `louppe.eu historical traffic` comparison. Do not add user counts across the two

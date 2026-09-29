@@ -5,7 +5,9 @@
   "scripts": {
     "build:blog": "node scripts/build-blog.mjs",
     "preview:blog": "node scripts/build-blog.mjs --preview",
-    "test:blog": "node --test scripts/build-blog.test.mjs"
+    "test:blog": "node --test scripts/build-blog.test.mjs",
+    "test": "node --test scripts/*.test.mjs",
+    "test:consent": "node --test scripts/analytics-consent.test.mjs"
   },
   "engines": {
     "node": ">=22"

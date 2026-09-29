@@ -20,6 +20,7 @@ Static HTML, CSS, and JavaScript. Blog pages are generated from Markdown. Approv
 - A large real app view is the main visual; feature sections remain open and unboxed
 - 1040px maximum media width, 920px reading sections, compact centred introduction
 - Responsive single-column layout on phones, with visible keyboard focus
+- Shared spacing rhythm: 88px between main sections (72px on phones), 24px between blocks, and 12px between related copy; split the section gap evenly around the closing divider
 
 ## Grain
 
@@ -39,7 +40,9 @@ Static HTML, CSS, and JavaScript. Blog pages are generated from Markdown. Approv
 - Demo uses its natural 16:9 shape, without cropping or padding to match the screenshots
 - Switching away from Demo pauses playback; `#review-demo` still opens Demo directly
 - Keep a written walkthrough with Demo; omit video/caption download buttons
-- Three short workflow descriptions, a keyboard example, expandable feature details
+- Three short workflow descriptions, an interactive Mac keyboard, expandable feature details
+- Keyboard: clickable review keys, Command and Shift combinations, and one large, concise shortcut explanation; allow a longer line for actions that depend on media type; proportional full layout above 600px and a compact shortcut pad on phones, with no horizontal scrolling or key captions
+- Keyboard keys sit directly on the page, with uniform 1px borders and no backing panel or raised edges; use a balanced 15-unit layout
 - Closing download and artist/contact/support section
 - No “how it works” navigation link, installation instructions or visible release-preview notices
 - Preserve canonical/search/social metadata, latest-release download URLs and opt-in analytics

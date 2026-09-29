@@ -63,8 +63,9 @@
   </script>
 
   <meta name="color-scheme" content="dark">
-  <link rel="stylesheet" href="/styles.css?v=20260929-1">
-  <script src="/site.js?v=20260926-4" defer></script>
+  <link rel="stylesheet" href="/styles.css?v=20260929-7">
+  <script src="/site.js?v=20260929-1" defer></script>
+  <script src="/keyboard.js?v=20260929-4" defer></script>
   <script src="/analytics-consent.js?v=20260923" defer></script>
 </head>
 <body>
@@ -122,15 +123,86 @@
     </section>
 
     <section class="keyboard-section reading-width" aria-labelledby="keyboard-title">
-      <div class="section-intro"><h2 id="keyboard-title">a few keys<br>keep you moving</h2></div>
+      <div class="keyboard-intro">
+        <div class="section-intro"><h2 id="keyboard-title">a few keys<br>keep you moving</h2></div>
+        <p id="keyboard-hint">choose a key to explore. try ⌘ for more shortcuts</p>
+      </div>
       <div class="key-explorer">
-        <div class="key-buttons" role="group" aria-label="Explore review shortcuts">
-          <button type="button" data-key="f" aria-label="F: mark yes" aria-pressed="true" aria-controls="key-description"><kbd>f</kbd><span>yes</span></button>
-          <button type="button" data-key="d" aria-label="D: mark no" aria-pressed="false" aria-controls="key-description"><kbd>d</kbd><span>no</span></button>
-          <button type="button" data-key="space" aria-label="Space: play or pause" aria-pressed="false" aria-controls="key-description"><kbd class="space-key">space</kbd><span>play / pause</span></button>
-          <button type="button" data-key="g" aria-label="G: switch view" aria-pressed="false" aria-controls="key-description"><kbd>g</kbd><span>view</span></button>
+        <div class="keyboard-layout" role="region" aria-label="Interactive Mac keyboard" tabindex="0" aria-describedby="keyboard-hint">
+          <div class="mac-keyboard" role="group" aria-label="Explore Louppe shortcuts">
+            <div class="keyboard-row">
+              <button class="keyboard-key" type="button" data-shortcut-key="escape" aria-label="Escape" aria-pressed="false" aria-controls="key-description"><kbd>esc</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="1" aria-label="1" aria-pressed="false" aria-controls="key-description"><kbd>1</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="2" aria-label="2" aria-pressed="false" aria-controls="key-description"><kbd>2</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="3" aria-label="3" aria-pressed="false" aria-controls="key-description"><kbd>3</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="4" aria-label="4" aria-pressed="false" aria-controls="key-description"><kbd>4</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="5" aria-label="5" aria-pressed="false" aria-controls="key-description"><kbd>5</kbd></button>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>6</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>7</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>8</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>9</kbd></span>
+              <button class="keyboard-key" type="button" data-shortcut-key="0" aria-label="0" aria-pressed="false" aria-controls="key-description"><kbd>0</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="-" aria-label="-" aria-pressed="false" aria-controls="key-description" disabled><kbd>-</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="=" aria-label="Plus" aria-pressed="false" aria-controls="key-description" disabled><kbd>+</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="backspace" aria-label="Delete" aria-pressed="false" aria-controls="key-description" disabled style="--key-span:8"><kbd>⌫</kbd></button></div>
+            <div class="keyboard-row">
+              <button class="keyboard-key" type="button" data-shortcut-key="tab" aria-label="Tab" aria-pressed="false" aria-controls="key-description" style="--key-span:6"><kbd>tab</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="q" aria-label="Q" aria-pressed="false" aria-controls="key-description"><kbd>q</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="w" aria-label="W" aria-pressed="false" aria-controls="key-description"><kbd>w</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="e" aria-label="E" aria-pressed="false" aria-controls="key-description"><kbd>e</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="r" aria-label="R" aria-pressed="false" aria-controls="key-description"><kbd>r</kbd></button>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>t</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>y</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>u</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>i</kbd></span>
+              <button class="keyboard-key" type="button" data-shortcut-key="o" aria-label="O" aria-pressed="false" aria-controls="key-description" disabled><kbd>o</kbd></button>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>p</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>[</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>]</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true" style="--key-span:6"><kbd>\</kbd></span></div>
+            <div class="keyboard-row">
+              <span class="keyboard-key unused-key" aria-hidden="true" style="--key-span:8"><kbd>caps</kbd></span>
+              <button class="keyboard-key" type="button" data-shortcut-key="a" aria-label="A" aria-pressed="false" aria-controls="key-description"><kbd>a</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="s" aria-label="S" aria-pressed="false" aria-controls="key-description"><kbd>s</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="d" aria-label="D" aria-pressed="false" aria-controls="key-description"><kbd>d</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="f" aria-label="F" aria-pressed="true" aria-controls="key-description"><kbd>f</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="g" aria-label="G" aria-pressed="false" aria-controls="key-description"><kbd>g</kbd></button>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>h</kbd></span>
+              <button class="keyboard-key" type="button" data-shortcut-key="j" aria-label="J" aria-pressed="false" aria-controls="key-description"><kbd>j</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="k" aria-label="K" aria-pressed="false" aria-controls="key-description"><kbd>k</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="l" aria-label="L" aria-pressed="false" aria-controls="key-description"><kbd>l</kbd></button>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>;</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>'</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true" style="--key-span:8"><kbd>⏎</kbd></span></div>
+            <div class="keyboard-row">
+              <button class="keyboard-key modifier-key" type="button" data-modifier="shift" aria-label="Show Shift shortcuts" aria-pressed="false" aria-controls="key-description" style="--key-span:10"><kbd>⇧</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="z" aria-label="Z" aria-pressed="false" aria-controls="key-description"><kbd>z</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="x" aria-label="X" aria-pressed="false" aria-controls="key-description"><kbd>x</kbd></button>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>c</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>v</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>b</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>n</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>m</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>,</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>.</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>/</kbd></span>
+              <button class="keyboard-key modifier-key" type="button" data-modifier="shift" aria-label="Show Shift shortcuts" aria-pressed="false" aria-controls="key-description" style="--key-span:10"><kbd>⇧</kbd></button></div>
+            <div class="keyboard-row">
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>fn</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>cntrl</kbd></span>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>opt</kbd></span>
+              <button class="keyboard-key modifier-key" type="button" data-modifier="command" aria-label="Show Command shortcuts" aria-pressed="false" aria-controls="key-description" style="--key-span:5"><kbd>⌘</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="space" aria-label="Space" aria-pressed="false" aria-controls="key-description" style="--key-span:22"><kbd>space</kbd></button>
+              <button class="keyboard-key modifier-key" type="button" data-modifier="command" aria-label="Show Command shortcuts" aria-pressed="false" aria-controls="key-description" style="--key-span:5"><kbd>⌘</kbd></button>
+              <span class="keyboard-key unused-key" aria-hidden="true"><kbd>opt</kbd></span><div class="keyboard-arrows" style="--key-span:12"><button class="keyboard-key" type="button" data-shortcut-key="arrowleft" aria-label="Left arrow" aria-pressed="false" aria-controls="key-description"><kbd>←</kbd></button><div class="vertical-arrows"><button class="keyboard-key" type="button" data-shortcut-key="arrowup" aria-label="Up arrow" aria-pressed="false" aria-controls="key-description"><kbd>↑</kbd></button>
+              <button class="keyboard-key" type="button" data-shortcut-key="arrowdown" aria-label="Down arrow" aria-pressed="false" aria-controls="key-description"><kbd>↓</kbd></button></div><button class="keyboard-key" type="button" data-shortcut-key="arrowright" aria-label="Right arrow" aria-pressed="false" aria-controls="key-description"><kbd>→</kbd></button></div></div>
+          </div>
+          <div class="shortcut-pad" role="group" aria-label="Explore Louppe shortcuts"></div>
         </div>
-        <div class="key-description" id="key-description" aria-live="polite"><p>mark a keeper and move to the next undecided item</p></div>
+        <div class="key-description" id="key-description" aria-live="polite" aria-atomic="true">
+          <kbd id="shortcut-chord">f</kbd>
+          <p id="shortcut-explanation">mark yes</p>
+        </div>
       </div>
     </section>
 

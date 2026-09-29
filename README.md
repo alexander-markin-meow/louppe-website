@@ -13,7 +13,8 @@ are generated locally from Markdown before publication. GitHub Pages publishes t
 - `index.html` — page content and metadata
 - `favicon.ico`, `favicon.png` — browser icons from the app’s purple grid artwork
 - `styles.css` — the Quiet darkroom visual system and animated grain
-- `site.js` — Gallery/Grid/Demo viewer, screenshot enlargement, and keyboard examples
+- `site.js` — Gallery/Grid/Demo viewer and screenshot enlargement
+- `keyboard.js` — interactive Mac keyboard with review, Command, and Shift shortcuts
 - `media/grain.svg` — fine monochrome background texture
 - `media/2026-09-26/` — two responsive screenshots, captioned walkthrough, and sharing image
 - `CNAME` — GitHub Pages custom domain

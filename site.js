@@ -61,20 +61,6 @@ imageLink.addEventListener('click', event => {
   showImage();
 });
 
-const shortcuts = {
-  f: 'mark a keeper and move to the next undecided item',
-  d: 'mark a reject and move on. the file stays in place',
-  space: 'play or pause video and audio',
-  g: 'switch between Gallery and Grid'
-};
-const keyDescription = document.getElementById('key-description');
-document.querySelectorAll('[data-key]').forEach(button => {
-  button.addEventListener('click', () => {
-    keyDescription.querySelector('p').textContent = shortcuts[button.dataset.key];
-    document.querySelectorAll('[data-key]').forEach(other => other.setAttribute('aria-pressed', String(other === button)));
-  });
-});
-
 document.querySelectorAll('dialog').forEach(dialog => {
   dialog.addEventListener('click', event => {
     if (event.target !== dialog) return;

@@ -24,7 +24,7 @@ Static HTML, CSS, and JavaScript. Blog pages are generated from Markdown. Approv
 ## Grain
 
 - Fine, monochrome 512px SVG texture in `media/grain.svg`
-- Screen blend at 0.12 opacity; 0.85 frequency, three octaves, gamma 2.1
+- Screen blend at 0.12 opacity; 0.78 frequency, three octaves, gamma 2.1
 - Discrete background-position changes on the live site's 840ms cycle
 - Grain stays behind all content; screenshots, video and text stay crisp
 - Reduced-motion preferences disable the grain animation

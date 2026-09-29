@@ -1,5 +1,5 @@
 /* A quiet reading column, using the landing page's type, colour and grain. */
-body::before{background-image:url('/media/grain.svg')}
+body::before{background-image:url('/media/grain.svg?v=20260929-1')}
 .site-header nav a[aria-current="page"]{color:var(--purple-text)}
 .blog-main{width:min(680px,calc(100% - 64px));margin:56px auto 100px;min-height:50vh}
 .blog-heading h1,.post-header h1{font-size:clamp(38px,5vw,56px);font-weight:550;letter-spacing:-1.8px;line-height:1.08;text-wrap:balance}

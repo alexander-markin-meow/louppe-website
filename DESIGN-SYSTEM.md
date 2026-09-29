@@ -7,7 +7,7 @@ Static HTML, CSS, and JavaScript. Blog pages are generated from Markdown. Approv
 - Always use Oxford commas in lists of three or more items, including headings and metadata
 
 - Address people working with photos, video, and audio, not only photographers
-- Lowercase except proper nouns, technical names and the owner's Contact label
+- Lowercase except proper nouns and technical names
 - Full stops separate sentences; omit them at the ends of headings, lines and paragraphs
 - Concise, practical copy; avoid extra captions, hints and repeated supporting text
 - Credit “made by an artist” and “an independent project by Alex Markin”
